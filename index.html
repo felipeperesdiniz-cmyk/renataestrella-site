@@ -683,6 +683,9 @@
       border-radius: 4px;
       overflow: hidden;
     }
+    .event-card + .event-card {
+      margin-top: 1.5rem;
+    }
     .event-card-header {
       padding: 1.5rem 1.75rem 1.25rem;
       border-bottom: 1px solid var(--line-sub);
@@ -734,6 +737,14 @@
     .event-thumb:hover img {
       transform: scale(1.06);
       filter: brightness(1.05);
+    }
+    .event-thumbs.even {
+      grid-template-columns: repeat(var(--cols, 2), 1fr);
+    }
+    .event-thumbs.even .event-thumb:first-child {
+      grid-column: auto;
+      grid-row: auto;
+      aspect-ratio: 1 / 1;
     }
     .event-thumb-more {
       position: absolute; inset: 0;
@@ -1387,9 +1398,9 @@
           style="object-position: center top">
         <img class="f-img" id="fi1"
           src="paris.webp"
-          alt="Paris — Renata com seu certificado Ferrandi"
+          alt="Ferrandi Paris e Ritz Escoffier — diplomas de Renata"
           width="1400" height="1941" loading="lazy"
-          style="object-position: center top">
+          style="object-position: center 30%">
         <img class="f-img" id="fi2"
           src="filosofia.webp"
           alt="Filosofia — a arte da pâtisserie de luxo"
@@ -1413,8 +1424,8 @@
           </div>
           <div class="f-chapter" id="fc1">
             <p class="f-num">Capítulo II</p>
-            <h3 class="f-title">Paris</h3>
-            <p class="f-text">Formada pela École Ferrandi, Ritz Escoffier e Le Cordon Bleu — as três academias mais rigorosas de pâtisserie do mundo. Renata aprendeu que a excelência não é um destino. É um compromisso diário. Cada técnica dominada em Paris é um padrão mantido em cada criação.</p>
+            <h3 class="f-title">Ferrandi & Ritz Escoffier</h3>
+            <p class="f-text">Na École Ferrandi Paris — conhecida como "Le Cordon Bleu da gastronomia francesa" — Renata se formou nas técnicas clássicas da alta pâtisserie, ao lado de chefs formados nos ateliês mais renomados da França. Na École Ritz Escoffier, dentro do lendário Hôtel Ritz Paris, refinou a precisão e o savoir-faire que definem a confeitaria de luxo parisiense. Duas das instituições mais seletivas do mundo — a base de cada criação que leva o nome Renata Estrella.</p>
           </div>
           <div class="f-chapter" id="fc2">
             <p class="f-num">Capítulo III</p>
@@ -1483,6 +1494,55 @@
         <div class="event-thumb" data-index="6" style="position:relative">
           <img src="casatua/casatua-109.webp" alt="Trufas de pistache — Casa Tua" loading="lazy">
           <div class="event-thumb-more">Ver todas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flavia's Birthday Event Card -->
+    <div class="event-card reveal">
+      <div class="event-card-header">
+        <div class="event-card-meta">
+          <p class="event-card-type">Aniversário · Rio de Janeiro</p>
+          <p class="event-card-name">Aniversário de Flavia</p>
+          <p class="event-card-detail">Mesa de doces personalizada · Criações exclusivas para celebração íntima</p>
+        </div>
+        <span class="event-card-count">3 fotos</span>
+      </div>
+      <div class="event-thumbs even" id="flaviaThumbs" style="--cols:3">
+        <div class="event-thumb" data-index="0">
+          <img src="flavia/flavia-1.webp" alt="Mesa de doces — Aniversário de Flavia" loading="lazy">
+        </div>
+        <div class="event-thumb" data-index="1">
+          <img src="flavia/flavia-2.webp" alt="Detalhes da mesa — Aniversário de Flavia" loading="lazy">
+        </div>
+        <div class="event-thumb" data-index="2" style="position:relative">
+          <img src="flavia/flavia-3.webp" alt="Doces artesanais — Aniversário de Flavia" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Carol Bassis Event Card -->
+    <div class="event-card reveal">
+      <div class="event-card-header">
+        <div class="event-card-meta">
+          <p class="event-card-type">Celebração Privada · Rio de Janeiro</p>
+          <p class="event-card-name">Evento Carol Bassis</p>
+          <p class="event-card-detail">Mesa de doces artesanais · Criações exclusivas para a ocasião</p>
+        </div>
+        <span class="event-card-count">4 fotos</span>
+      </div>
+      <div class="event-thumbs even" id="carolbassiThumbs" style="--cols:2">
+        <div class="event-thumb" data-index="0">
+          <img src="carolbassi/carolbassi-1.webp" alt="Mesa principal — Evento Carol Bassis" loading="lazy">
+        </div>
+        <div class="event-thumb" data-index="1">
+          <img src="carolbassi/carolbassi-2.webp" alt="Detalhes da mesa — Evento Carol Bassis" loading="lazy">
+        </div>
+        <div class="event-thumb" data-index="2">
+          <img src="carolbassi/carolbassi-4.webp" alt="Doces artesanais — Evento Carol Bassis" loading="lazy">
+        </div>
+        <div class="event-thumb" data-index="3" style="position:relative">
+          <img src="carolbassi/carolbassi-5.webp" alt="Mesa de doces — Evento Carol Bassis" loading="lazy">
         </div>
       </div>
     </div>
@@ -2061,18 +2121,33 @@ document.querySelectorAll('.menu-tab').forEach(function(tab) {
 document.getElementById('yr').textContent = new Date().getFullYear();
 
 /* =====================================================
-   LIGHTBOX — Casa Tua gallery
+   LIGHTBOX — Event galleries
 ===================================================== */
 (function () {
-  const images = [
-    { src: 'casatua/casatua-10.webp',  alt: 'Mesa principal — Casa Tua' },
-    { src: 'casatua/casatua-12.webp',  alt: 'Mesa de doces — Casa Tua' },
-    { src: 'casatua/casatua-100.webp', alt: 'Detalhes da mesa — Casa Tua' },
-    { src: 'casatua/casatua-103.webp', alt: 'Cardápio Casa Tua' },
-    { src: 'casatua/casatua-106.webp', alt: 'Doces artesanais — Casa Tua' },
-    { src: 'casatua/casatua-108.webp', alt: 'Docinhos de rosa — Casa Tua' },
-    { src: 'casatua/casatua-109.webp', alt: 'Trufas de pistache — Casa Tua' },
-  ];
+  const galleries = {
+    casatuaThumbs: [
+      { src: 'casatua/casatua-10.webp',  alt: 'Mesa principal — Casa Tua' },
+      { src: 'casatua/casatua-12.webp',  alt: 'Mesa de doces — Casa Tua' },
+      { src: 'casatua/casatua-100.webp', alt: 'Detalhes da mesa — Casa Tua' },
+      { src: 'casatua/casatua-103.webp', alt: 'Cardápio Casa Tua' },
+      { src: 'casatua/casatua-106.webp', alt: 'Doces artesanais — Casa Tua' },
+      { src: 'casatua/casatua-108.webp', alt: 'Docinhos de rosa — Casa Tua' },
+      { src: 'casatua/casatua-109.webp', alt: 'Trufas de pistache — Casa Tua' },
+    ],
+    flaviaThumbs: [
+      { src: 'flavia/flavia-1.webp', alt: 'Mesa de doces — Aniversário de Flavia' },
+      { src: 'flavia/flavia-2.webp', alt: 'Detalhes da mesa — Aniversário de Flavia' },
+      { src: 'flavia/flavia-3.webp', alt: 'Doces artesanais — Aniversário de Flavia' },
+    ],
+    carolbassiThumbs: [
+      { src: 'carolbassi/carolbassi-1.webp', alt: 'Mesa principal — Evento Carol Bassis' },
+      { src: 'carolbassi/carolbassi-2.webp', alt: 'Detalhes da mesa — Evento Carol Bassis' },
+      { src: 'carolbassi/carolbassi-4.webp', alt: 'Doces artesanais — Evento Carol Bassis' },
+      { src: 'carolbassi/carolbassi-5.webp', alt: 'Mesa de doces — Evento Carol Bassis' },
+    ],
+  };
+
+  let images = galleries.casatuaThumbs;
 
   const lb      = document.getElementById('lightbox');
   const lbImg   = document.getElementById('lbImg');
@@ -2083,13 +2158,16 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   const lbCtr   = document.getElementById('lbCounter');
   let current = 0;
 
-  // Build dots
-  images.forEach((_, i) => {
-    const d = document.createElement('div');
-    d.className = 'lb-dot' + (i === 0 ? ' on' : '');
-    d.addEventListener('click', () => show(i));
-    lbDots.appendChild(d);
-  });
+  function buildDots() {
+    lbDots.innerHTML = '';
+    images.forEach((_, i) => {
+      const d = document.createElement('div');
+      d.className = 'lb-dot' + (i === 0 ? ' on' : '');
+      d.addEventListener('click', () => show(i));
+      lbDots.appendChild(d);
+    });
+  }
+  buildDots();
 
   function show(idx) {
     current = (idx + images.length) % images.length;
@@ -2103,7 +2181,9 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     lbDots.querySelectorAll('.lb-dot').forEach((d, i) => d.classList.toggle('on', i === current));
   }
 
-  function open(idx) {
+  function open(gallery, idx) {
+    images = galleries[gallery];
+    buildDots();
     show(idx);
     lb.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -2116,8 +2196,10 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   }
 
   // Wire thumbnails
-  document.querySelectorAll('#casatuaThumbs .event-thumb').forEach(el => {
-    el.addEventListener('click', () => open(parseInt(el.dataset.index)));
+  Object.keys(galleries).forEach(galleryId => {
+    document.querySelectorAll('#' + galleryId + ' .event-thumb').forEach(el => {
+      el.addEventListener('click', () => open(galleryId, parseInt(el.dataset.index)));
+    });
   });
 
   lbClose.addEventListener('click', close);
