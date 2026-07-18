@@ -6,7 +6,7 @@
   <title>Renata — Pâtisserie de Luxo | Confeitaria Artesanal para Eventos</title>
 
   <!-- SEO -->
-  <meta name="description" content="Renata é uma pâtisserie de luxo com formação na Ferrandi Paris, Ritz Escoffier e Le Cordon Bleu. Criações artesanais exclusivas para casamentos, eventos corporativos e celebrações de alto padrão em Rio de Janeiro e todo o Brasil.">
+  <meta name="description" content="Pâtisserie de luxo no Rio de Janeiro: bolos e doces artesanais para casamentos e eventos de alto padrão, com formação Ferrandi Paris e Ritz Escoffier.">
   <meta name="keywords" content="pâtisserie luxo, confeitaria premium Rio de Janeiro, bolo de casamento luxo, Ferrandi Paris, Le Cordon Bleu, alta confeitaria, eventos alto padrão">
   <link rel="canonical" href="https://www.renatapatisserie.com.br/">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
@@ -37,6 +37,8 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%230A0905'/%3E%3Ctext x='50%25' y='22' text-anchor='middle' font-size='18' fill='%23C9A96E'%3ER%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="manifest.json">
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -49,17 +51,17 @@
         "name": "Renata Pâtisserie",
         "description": "Pâtisserie de luxo especializada em criações artesanais para casamentos, eventos corporativos e celebrações de alto padrão.",
         "url": "https://www.renatapatisserie.com.br/",
-        "telephone": "+55-11-00000-0000",
+        "telephone": "+5521999821270",
         "email": "contato@renatapatisserie.com.br",
         "priceRange": "$$$$",
         "image": "https://www.renatapatisserie.com.br/og-image.jpg",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Rio de Janeiro",
-          "addressRegion": "SP",
+          "addressRegion": "RJ",
           "addressCountry": "BR"
         },
-        "geo": {"@type": "GeoCoordinates", "latitude": "-23.5505", "longitude": "-46.6333"},
+        "geo": {"@type": "GeoCoordinates", "latitude": "-22.9068", "longitude": "-43.1729"},
         "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens": "09:00","closes": "18:00"}],
         "sameAs": ["https://www.instagram.com/renatapatisserie"]
       },
@@ -109,12 +111,12 @@
       --bg-3:         #1C180F;
       --gold:         #C9A96E;
       --gold-lt:      #DFC08F;
-      --gold-dk:      #8A6E45;
+      --gold-dk:      #A0824F; /* ≥4.5:1 on all bg tokens (WCAG AA) */
       --ivory:        #F5EFE0;
       --ivory-2:      #C8BDA8;
       --text:         #F0E8D4;
-      --text-2:       #8A7F6E;
-      --text-3:       #4A453E;
+      --text-2:       #9C917F; /* ≥4.5:1 on all bg tokens (WCAG AA) */
+      --text-3:       #8D8271; /* ≥4.5:1 on all bg tokens (WCAG AA) */
       --line:         rgba(201,169,110,0.15);
       --line-sub:     rgba(201,169,110,0.08);
 
@@ -574,16 +576,24 @@
       position: relative; z-index: 2;
       width: 100%; display: flex; align-items: center;
     }
+    /* Outgoing text must be fully invisible before incoming text starts:
+       fade-out runs in .28s, fade-in is delayed .32s. visibility + z-index
+       keep inactive chapters out of the stacking order during fast scroll. */
     .f-chapter {
       position: absolute; left: 0; top: 50%;
       transform: translateY(calc(-50% + 18px));
       width: 100%;
       padding: 2rem clamp(1.25rem, 5vw, 4rem);
       opacity: 0;
-      transition: opacity .55s var(--ease-std), transform .55s var(--ease-std);
+      visibility: hidden;
+      z-index: 0;
+      transition: opacity .28s var(--ease-std), transform .28s var(--ease-std), visibility 0s .28s;
     }
     .f-chapter.on {
       opacity: 1; transform: translateY(-50%);
+      visibility: visible;
+      z-index: 1;
+      transition: opacity .5s var(--ease-std) .32s, transform .5s var(--ease-std) .32s, visibility 0s .32s;
     }
     .f-num {
       font-size: .58rem; font-weight: 500; letter-spacing: .26em;
@@ -1104,6 +1114,15 @@
     .wa-note {
       font-size: .68rem; color: var(--text-3); letter-spacing: .06em;
     }
+    .contact-email {
+      font-size: .78rem; color: var(--text-2); letter-spacing: .04em;
+      margin-top: .4rem;
+    }
+    .contact-email a {
+      color: var(--gold); text-decoration: none;
+      border-bottom: 1px solid var(--line); transition: border-color .3s;
+    }
+    .contact-email a:hover { border-color: var(--gold); }
 
     /* =====================================================
        FOOTER
@@ -1921,6 +1940,7 @@
           Conversar pelo WhatsApp
         </a>
         <p class="wa-note">Responderei o mais breve possível — geralmente em minutos.</p>
+        <p class="contact-email">Prefere e-mail? <a href="mailto:contato@renatapatisserie.com.br">contato@renatapatisserie.com.br</a></p>
       </div>
     </div>
   </div>
@@ -1933,7 +1953,7 @@
   <div class="wrap">
     <div class="foot-inner">
       <div>
-        <a href="#" class="foot-logo" aria-label="Renata Pâtisserie — Voltar ao topo"><canvas class="logo-canvas" data-src="logo.png"></canvas></a>
+        <a href="#" class="foot-logo" aria-label="Renata Pâtisserie — Voltar ao topo"><canvas class="logo-canvas" data-src="logo.webp"></canvas></a>
         <p class="foot-creds">Ferrandi · Ritz Escoffier · Le Cordon Bleu</p>
       </div>
       <nav class="foot-links" aria-label="Links do rodapé">
@@ -1958,7 +1978,7 @@
           </svg>
         </a>
       </div>
-      <p class="foot-copy">© <span id="yr"></span> Renata Pâtisserie · Todos os direitos reservados · Rio de Janeiro, Brasil</p>
+      <p class="foot-copy">© <span id="yr"></span> Renata Pâtisserie · Todos os direitos reservados · Rio de Janeiro, Brasil · <a href="mailto:contato@renatapatisserie.com.br" style="color:var(--text-2)">contato@renatapatisserie.com.br</a></p>
     </div>
   </div>
 </footer>
@@ -2252,7 +2272,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 
   // Intro panel logo
   const introCanvas = document.getElementById('logoCanvas');
-  if (introCanvas) stripWhite(introCanvas, 'logo.png');
+  if (introCanvas) stripWhite(introCanvas, 'logo.webp');
 
   // Nav + footer logos
   document.querySelectorAll('canvas.logo-canvas').forEach(function (c) {
