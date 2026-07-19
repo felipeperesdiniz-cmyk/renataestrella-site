@@ -741,9 +741,11 @@
     }
     .event-thumb img {
       width: 100%; height: 100%; object-fit: cover;
-      transition: transform .6s var(--ease-lux), filter .4s;
+      transition: transform .6s var(--ease-lux), filter .4s, opacity .5s ease;
       filter: brightness(.92);
+      opacity: 0; /* fades in via .ld when loaded; thumb bg acts as placeholder */
     }
+    .event-thumb img.ld { opacity: 1; }
     .event-thumb:hover img {
       transform: scale(1.06);
       filter: brightness(1.05);
@@ -1493,49 +1495,58 @@
       </div>
       <div class="event-thumbs" id="casatuaThumbs">
         <div class="event-thumb" data-index="0">
-          <img src="casatua/casatua-10.webp" alt="Mesa principal — Casa Tua" loading="lazy">
+          <img src="casatua/casatua-10.webp" alt="Mesa principal — Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="casatua/casatua-12.webp" alt="Mesa de doces — Casa Tua" loading="lazy">
+          <img src="casatua/casatua-12.webp" alt="Mesa de doces — Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="casatua/casatua-100.webp" alt="Detalhes da mesa — Casa Tua" loading="lazy">
+          <img src="casatua/casatua-100.webp" alt="Detalhes da mesa — Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="casatua/casatua-103.webp" alt="Cardápio Casa Tua" loading="lazy">
+          <img src="casatua/casatua-103.webp" alt="Cardápio Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4">
-          <img src="casatua/casatua-106.webp" alt="Doces artesanais — Casa Tua" loading="lazy">
+          <img src="casatua/casatua-106.webp" alt="Doces artesanais — Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="5" style="position:relative">
-          <img src="casatua/casatua-108.webp" alt="Docinhos de rosa — Casa Tua" loading="lazy">
+          <img src="casatua/casatua-108.webp" alt="Docinhos de rosa — Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="6" style="position:relative">
-          <img src="casatua/casatua-109.webp" alt="Trufas de pistache — Casa Tua" loading="lazy">
+          <img src="casatua/casatua-109.webp" alt="Trufas de pistache — Casa Tua" loading="lazy" decoding="async">
           <div class="event-thumb-more">Ver todas</div>
         </div>
       </div>
     </div>
 
-    <!-- Flavia's Birthday Event Card -->
+    <!-- Candlelit Birthday Dinner Event Card -->
     <div class="event-card reveal">
       <div class="event-card-header">
         <div class="event-card-meta">
           <p class="event-card-type">Aniversário · Rio de Janeiro</p>
-          <p class="event-card-name">Aniversário de Flavia</p>
-          <p class="event-card-detail">Mesa de doces personalizada · Criações exclusivas para celebração íntima</p>
+          <p class="event-card-name">Jantar de Aniversário</p>
+          <p class="event-card-detail">Bolo assinatura · Mesa de doces à luz de velas · Celebração íntima</p>
         </div>
-        <span class="event-card-count">3 fotos</span>
+        <span class="event-card-count">6 fotos</span>
       </div>
-      <div class="event-thumbs even" id="flaviaThumbs" style="--cols:3">
+      <div class="event-thumbs even" id="eventosThumbs" style="--cols:3">
         <div class="event-thumb" data-index="0">
-          <img src="flavia/flavia-1.webp" alt="Mesa de doces — Aniversário de Flavia" loading="lazy">
+          <img src="eventos/evento-1.webp" alt="Mesa posta à luz de velas — Jantar de Aniversário" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="flavia/flavia-2.webp" alt="Detalhes da mesa — Aniversário de Flavia" loading="lazy">
+          <img src="eventos/evento-2.webp" alt="Mesa do bolo com monograma — Jantar de Aniversário" width="1118" height="745" loading="lazy" decoding="async">
         </div>
-        <div class="event-thumb" data-index="2" style="position:relative">
-          <img src="flavia/flavia-3.webp" alt="Doces artesanais — Aniversário de Flavia" loading="lazy">
+        <div class="event-thumb" data-index="2">
+          <img src="eventos/evento-3.webp" alt="Bolo de chocolate artesanal — Jantar de Aniversário" width="960" height="1280" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="3">
+          <img src="eventos/evento-4.webp" alt="Bolo em camadas em cenário iluminado — Jantar de Aniversário" width="1280" height="960" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="4">
+          <img src="eventos/evento-5.webp" alt="Detalhe do monograma no bolo — Jantar de Aniversário" width="1118" height="745" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="5">
+          <img src="eventos/evento-6.webp" alt="Mesa dos convidados à luz de velas — Jantar de Aniversário" width="1280" height="852" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1552,16 +1563,16 @@
       </div>
       <div class="event-thumbs even" id="carolbassiThumbs" style="--cols:2">
         <div class="event-thumb" data-index="0">
-          <img src="carolbassi/carolbassi-1.webp" alt="Mesa principal — Evento Carol Bassis" loading="lazy">
+          <img src="carolbassi/carolbassi-1.webp" alt="Mesa principal — Evento Carol Bassis" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="carolbassi/carolbassi-2.webp" alt="Detalhes da mesa — Evento Carol Bassis" loading="lazy">
+          <img src="carolbassi/carolbassi-2.webp" alt="Detalhes da mesa — Evento Carol Bassis" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="carolbassi/carolbassi-4.webp" alt="Doces artesanais — Evento Carol Bassis" loading="lazy">
+          <img src="carolbassi/carolbassi-4.webp" alt="Doces artesanais — Evento Carol Bassis" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3" style="position:relative">
-          <img src="carolbassi/carolbassi-5.webp" alt="Mesa de doces — Evento Carol Bassis" loading="lazy">
+          <img src="carolbassi/carolbassi-5.webp" alt="Mesa de doces — Evento Carol Bassis" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1737,7 +1748,7 @@
           <img
             src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&auto=format&fit=crop"
             alt="Casamento Ana e Rafael — Grand Hyatt Rio de Janeiro"
-            width="800" height="450" loading="lazy">
+            width="800" height="450" loading="lazy" decoding="async">
         </div>
         <div class="test-body">
           <p class="test-event">Casamento · Grand Hyatt Rio de Janeiro</p>
@@ -1760,7 +1771,7 @@
           <img
             src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80&auto=format&fit=crop"
             alt="Evento corporativo de luxo"
-            width="800" height="450" loading="lazy">
+            width="800" height="450" loading="lazy" decoding="async">
         </div>
         <div class="test-body">
           <p class="test-event">Evento Corporativo · Rio de Janeiro</p>
@@ -1783,7 +1794,7 @@
           <img
             src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=800&q=80&auto=format&fit=crop"
             alt="Debutante — Hotel Fasano"
-            width="800" height="450" loading="lazy">
+            width="800" height="450" loading="lazy" decoding="async">
         </div>
         <div class="test-body">
           <p class="test-event">Debutante · Hotel Fasano Rio</p>
@@ -2154,10 +2165,13 @@ document.getElementById('yr').textContent = new Date().getFullYear();
       { src: 'casatua/casatua-108.webp', alt: 'Docinhos de rosa — Casa Tua' },
       { src: 'casatua/casatua-109.webp', alt: 'Trufas de pistache — Casa Tua' },
     ],
-    flaviaThumbs: [
-      { src: 'flavia/flavia-1.webp', alt: 'Mesa de doces — Aniversário de Flavia' },
-      { src: 'flavia/flavia-2.webp', alt: 'Detalhes da mesa — Aniversário de Flavia' },
-      { src: 'flavia/flavia-3.webp', alt: 'Doces artesanais — Aniversário de Flavia' },
+    eventosThumbs: [
+      { src: 'eventos/evento-1.webp', alt: 'Mesa posta à luz de velas — Jantar de Aniversário' },
+      { src: 'eventos/evento-2.webp', alt: 'Mesa do bolo com monograma — Jantar de Aniversário' },
+      { src: 'eventos/evento-3.webp', alt: 'Bolo de chocolate artesanal — Jantar de Aniversário' },
+      { src: 'eventos/evento-4.webp', alt: 'Bolo em camadas em cenário iluminado — Jantar de Aniversário' },
+      { src: 'eventos/evento-5.webp', alt: 'Detalhe do monograma no bolo — Jantar de Aniversário' },
+      { src: 'eventos/evento-6.webp', alt: 'Mesa dos convidados à luz de velas — Jantar de Aniversário' },
     ],
     carolbassiThumbs: [
       { src: 'carolbassi/carolbassi-1.webp', alt: 'Mesa principal — Evento Carol Bassis' },
@@ -2242,6 +2256,18 @@ document.getElementById('yr').textContent = new Date().getFullYear();
     if (Math.abs(dx) > 50) show(dx < 0 ? current + 1 : current - 1);
   });
 })();
+
+/* =====================================================
+   GALLERY THUMB FADE-IN — reveal images as they load
+===================================================== */
+document.querySelectorAll('.event-thumb img').forEach(function (img) {
+  const reveal = function () { img.classList.add('ld'); };
+  if (img.complete && img.naturalWidth > 0) reveal();
+  else {
+    img.addEventListener('load', reveal, { once: true });
+    img.addEventListener('error', reveal, { once: true }); // show alt text instead of an invisible box
+  }
+});
 
 /* =====================================================
    LOGO — strip white/near-white background via canvas
