@@ -534,7 +534,7 @@
     .founder-intro h2 {
       font-family: var(--serif);
       font-size: clamp(1.9rem, 4.5vw, 3.5rem);
-      font-weight: 300; color: var(--ivory);
+      font-weight: 300; line-height: 1.15; color: var(--ivory);
       margin-top: .75rem; margin-bottom: 1rem;
     }
     .founder-intro p {
@@ -638,7 +638,7 @@
     .sec-header h2 {
       font-family: var(--serif);
       font-size: clamp(1.9rem, 4.5vw, 3.5rem);
-      font-weight: 300; color: var(--ivory);
+      font-weight: 300; line-height: 1.15; color: var(--ivory);
       margin-top: .75rem; margin-bottom: .75rem;
     }
     .sec-header p { font-size: .9rem; color: var(--text-2); max-width: 44ch; }
@@ -905,63 +905,108 @@
       flex-shrink: 0;
     }
 
-    /* Item grid */
+    /* Split — bespoke events vs. atelier collection */
+    .menu-split {
+      display: grid; grid-template-columns: 1fr; gap: 1px;
+      background: var(--line-sub);
+      border: 1px solid var(--line-sub);
+      border-radius: 3px; overflow: hidden;
+      margin-bottom: clamp(2.5rem,6vh,4rem);
+    }
+    @media (min-width: 640px) {
+      .menu-split { grid-template-columns: 1fr 1fr; }
+    }
+    .menu-split-item {
+      background: var(--bg-2); padding: 1.75rem;
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: .75rem;
+    }
+    a.menu-split-item { transition: background .3s; }
+    a.menu-split-item:hover { background: var(--bg-3); }
+    .menu-split-label {
+      font-size: .6rem; font-weight: 500; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .menu-split-text {
+      font-size: .85rem; color: var(--text-2); line-height: 1.8;
+    }
+    .menu-split-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-size: .62rem; font-weight: 500; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-top: .4rem; transition: gap .3s;
+    }
+    a.menu-split-item:hover .menu-split-cta { gap: .9rem; }
+
+    /* Item grid — carte style: airy, max two columns */
     .menu-items {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 0;
+      row-gap: 0;
+      column-gap: clamp(3rem, 6vw, 5rem);
     }
-    @media (min-width: 640px) {
+    @media (min-width: 900px) {
       .menu-items { grid-template-columns: 1fr 1fr; }
-    }
-    @media (min-width: 1024px) {
-      .menu-items { grid-template-columns: 1fr 1fr 1fr; }
     }
 
     .menu-item {
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.05);
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line-sub);
       display: flex; justify-content: space-between; align-items: baseline;
-      gap: 1rem;
+      gap: 1.25rem;
     }
     .menu-item:last-child { border-bottom: none; }
     .menu-item-name {
-      font-size: clamp(.82rem, 1.3vw, .92rem);
-      font-weight: 300; color: var(--ivory-2);
-      line-height: 1.4;
+      font-family: var(--serif);
+      font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+      font-weight: 400; color: var(--ivory);
+      line-height: 1.35; letter-spacing: .01em;
     }
     .menu-item-desc {
-      font-size: .7rem; color: var(--text-3);
-      margin-top: .15rem; line-height: 1.5;
+      font-family: var(--sans);
+      font-size: .72rem; color: var(--text-3);
+      margin-top: .3rem; line-height: 1.6;
     }
     .menu-item-price {
       font-family: var(--serif);
-      font-size: clamp(.82rem, 1.3vw, .95rem);
-      font-weight: 300; color: var(--gold);
+      font-size: clamp(.88rem, 1.3vw, 1rem);
+      font-weight: 400; color: var(--gold);
       white-space: nowrap; flex-shrink: 0;
     }
+    .menu-note {
+      font-size: .72rem; color: var(--text-3);
+      line-height: 1.7; margin-top: 1.1rem;
+    }
 
-    /* Observações */
-    .menu-obs {
+    /* Como encomendar — discreet accordion */
+    .menu-como {
       margin-top: clamp(2.5rem,5vh,3.5rem);
-      padding: 1.75rem;
       background: var(--bg-2);
       border: 1px solid var(--line-sub);
       border-radius: 3px;
     }
-    .menu-obs-title {
-      font-size: .58rem; font-weight: 500; letter-spacing: .22em;
+    .menu-como summary {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1.4rem 1.75rem;
+    }
+    .menu-como summary::-webkit-details-marker { display: none; }
+    .menu-como-title {
+      font-size: .6rem; font-weight: 500; letter-spacing: .22em;
       text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1rem;
     }
-    .menu-obs ul {
-      list-style: none; display: flex; flex-direction: column; gap: .6rem;
+    .menu-como[open] .faq-icon::after {
+      transform: translate(-50%,-50%) rotate(90deg); opacity: 0;
     }
-    .menu-obs li {
+    .menu-como ul {
+      list-style: none; display: flex; flex-direction: column;
+      gap: .6rem; padding: 0 1.75rem 1.6rem;
+    }
+    .menu-como li {
       font-size: .8rem; color: var(--text-2); line-height: 1.6;
       padding-left: 1rem; position: relative;
     }
-    .menu-obs li::before {
+    .menu-como li::before {
       content: '—'; position: absolute; left: 0;
       color: var(--gold-dk); font-size: .7rem;
     }
@@ -1294,7 +1339,7 @@
 <div class="nav__mob" id="navMob" role="dialog" aria-modal="true" aria-label="Navegação">
   <a href="#founder"      onclick="closeNav()">Sobre</a>
   <a href="#portfolio"    onclick="closeNav()">Criações</a>
-  <a href="#cardapio"     onclick="closeNav()">Cardápio</a>
+  <a href="#cardapio"     onclick="closeNav()">Ateliê</a>
   <a href="#testimonials" onclick="closeNav()">Histórias</a>
   <a href="#services"     onclick="closeNav()">Serviços</a>
   <a href="#faq"          onclick="closeNav()">FAQ</a>
@@ -1309,6 +1354,7 @@
       <div class="nav__links" role="menubar">
         <a href="#founder"      role="menuitem">Sobre</a>
         <a href="#portfolio"    role="menuitem">Criações</a>
+        <a href="#cardapio"     role="menuitem">Ateliê</a>
         <a href="#testimonials" role="menuitem">Histórias</a>
         <a href="#services"     role="menuitem">Serviços</a>
         <a href="#faq"          role="menuitem">FAQ</a>
@@ -1660,12 +1706,28 @@
 <!-- ====================================================
      CARDÁPIO
 ==================================================== -->
-<section id="cardapio" aria-label="Cardápio Renata Estrella">
+<section id="cardapio" aria-label="Coleção do Ateliê">
   <div class="wrap">
     <div class="sec-header">
-      <span class="overline reveal">Cardápio</span>
-      <h2 class="reveal d1">Criações para cada<br>momento especial</h2>
-      <p class="reveal d2">Tudo produzido sob encomenda no ateliê, com insumos selecionados e técnicas internacionais.</p>
+      <span class="overline reveal">O Ateliê</span>
+      <h2 class="reveal d1">Coleção do Ateliê</h2>
+      <p class="reveal d2">Criações da casa, produzidas sob encomenda em edição limitada — a assinatura Renata Estrella à sua mesa.</p>
+    </div>
+
+    <!-- Duas formas de encomendar -->
+    <div class="menu-split reveal d2">
+      <a href="#contact" class="menu-split-item">
+        <p class="menu-split-label">Eventos Sob Medida</p>
+        <p class="menu-split-text">Casamentos, eventos corporativos e celebrações. Cada projeto é único — criado do zero e orçado individualmente em consultoria.</p>
+        <span class="menu-split-cta">
+          Consultar meu evento
+          <svg width="13" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <div class="menu-split-item">
+        <p class="menu-split-label">Coleção do Ateliê</p>
+        <p class="menu-split-text">A seleção da casa, disponível sob encomenda com os valores abaixo — a forma mais simples de provar o ateliê antes do seu evento.</p>
+      </div>
     </div>
 
     <!-- Tabs -->
@@ -1726,7 +1788,7 @@
       <div class="menu-category">
         <h3 class="menu-category-title">Macarons</h3>
         <div class="menu-items">
-          <div class="menu-item"><div><p class="menu-item-name">Macarons artesanais</p><p class="menu-item-desc">Consultar sabores disponíveis · Pedido mínimo 20 unidades por sabor</p></div><span class="menu-item-price">R$ 8,00 / un</span></div>
+          <div class="menu-item"><div><p class="menu-item-name">Macarons artesanais</p><p class="menu-item-desc">Consultar sabores da estação · Produção limitada — mínimo de 20 unidades por sabor</p></div><span class="menu-item-price">R$ 8,00 / un</span></div>
         </div>
       </div>
     </div>
@@ -1754,7 +1816,7 @@
           <div class="menu-item"><div><p class="menu-item-name">Massa chocolate</p><p class="menu-item-desc">Valor varia conforme número de fatias</p></div><span class="menu-item-price">R$ 19,00 / fatia</span></div>
           <div class="menu-item"><div><p class="menu-item-name">Red Velvet</p><p class="menu-item-desc">Valor varia conforme número de fatias</p></div><span class="menu-item-price">R$ 21,00 / fatia</span></div>
         </div>
-        <p style="font-size:.72rem;color:var(--text-3);margin-top:1rem;padding-left:.25rem">Recheios: Chocolate Belga ao leite · Chocolate Belga branco · Limão siciliano · Doce de leite · Crème Brûlée · Nozes (+R$25) · Amêndoas (+R$20). Topos com frutas vermelhas, flores ou macarons cobrados à parte.</p>
+        <p class="menu-note">Recheios: Chocolate Belga ao leite · Chocolate Belga branco · Limão siciliano · Doce de leite · Crème Brûlée · Nozes (+R$ 25) · Amêndoas (+R$ 20). Topos com frutas vermelhas, flores ou macarons com valores à parte.</p>
       </div>
 
       <div class="menu-category">
@@ -1793,18 +1855,21 @@
       </div>
     </div>
 
-    <!-- Observações -->
-    <div class="menu-obs">
-      <p class="menu-obs-title">Informações importantes</p>
+    <!-- Como encomendar -->
+    <details class="menu-como">
+      <summary>
+        <span class="menu-como-title">Como encomendar</span>
+        <span class="faq-icon" aria-hidden="true"></span>
+      </summary>
       <ul>
-        <li>Todos os itens são produzidos sob encomenda no ateliê, com insumos rigorosamente selecionados.</li>
-        <li>Pedido mínimo de 20 unidades por sabor nos doces.</li>
-        <li>Prazo de 3 dias úteis de antecedência ou mediante disponibilidade em agenda.</li>
-        <li>Confirmação após envio do comprovante de pagamento. Somente depósito bancário ou Pix.</li>
-        <li>Para eventos de maior porte: 50% no ato da reserva, restante 10 dias antes do evento.</li>
-        <li>Retirada no ateliê — Barra da Tijuca, com horário estabelecido. Entrega opcional via Uber a cargo do cliente.</li>
+        <li>Todas as criações são produzidas sob encomenda no ateliê, com insumos rigorosamente selecionados.</li>
+        <li>Doces finos em produção limitada — mínimo de 20 unidades por sabor.</li>
+        <li>Encomendas com 3 dias úteis de antecedência, conforme a agenda do ateliê.</li>
+        <li>A reserva é confirmada mediante pagamento antecipado, por transferência bancária ou Pix.</li>
+        <li>Eventos de maior porte: 50% no ato da reserva e o restante até 10 dias antes da data.</li>
+        <li>Retirada no ateliê, na Barra da Tijuca, em horário reservado. Entrega privada disponível sob consulta.</li>
       </ul>
-    </div>
+    </details>
   </div>
 </section>
 
@@ -1815,7 +1880,7 @@
   <div class="wrap">
     <div style="text-align:center">
       <span class="overline reveal">Histórias reais</span>
-      <h2 class="reveal d1" style="font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.5rem);font-weight:300;color:var(--ivory);margin-top:.75rem">
+      <h2 class="reveal d1" style="font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.5rem);font-weight:300;line-height:1.15;color:var(--ivory);margin-top:.75rem">
         O que os convidados lembraram<br>anos depois
       </h2>
     </div>
@@ -1943,7 +2008,7 @@
   <div class="wrap">
     <div style="text-align:center">
       <span class="overline reveal">FAQ</span>
-      <h2 class="reveal d1" style="font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.5rem);font-weight:300;color:var(--ivory);margin-top:.75rem">
+      <h2 class="reveal d1" style="font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.5rem);font-weight:300;line-height:1.15;color:var(--ivory);margin-top:.75rem">
         Perguntas frequentes
       </h2>
     </div>
@@ -2048,6 +2113,7 @@
       <nav class="foot-links" aria-label="Links do rodapé">
         <a href="#founder">Sobre</a>
         <a href="#portfolio">Criações</a>
+        <a href="#cardapio">Ateliê</a>
         <a href="#testimonials">Histórias</a>
         <a href="#services">Serviços</a>
         <a href="#faq">FAQ</a>
