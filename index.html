@@ -769,6 +769,44 @@
       pointer-events: none;
     }
 
+    /* Sub-events — distinct events hosted at the same venue */
+    .event-sub-header {
+      padding: 1.1rem 1.75rem .95rem;
+      border-top: 1px solid var(--line-sub);
+      display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+    }
+    .event-card-header + .event-sub-header { border-top: none; }
+    .event-sub-title {
+      font-size: .62rem; font-weight: 500; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--gold);
+    }
+    .event-sub-detail { font-size: .7rem; color: var(--text-3); margin-top: .3rem; }
+    .event-sub-count {
+      font-size: .6rem; letter-spacing: .16em; text-transform: uppercase;
+      color: var(--text-3); white-space: nowrap;
+    }
+
+    /* Video tiles inside an event card */
+    .event-videos {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 3px; padding: 0 3px 3px;
+    }
+    .event-video {
+      position: relative; overflow: hidden;
+      background: var(--bg-3); aspect-ratio: 16 / 9;
+    }
+    .event-video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .event-video-tag {
+      position: absolute; left: .75rem; bottom: .65rem;
+      font-size: .56rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--ivory); background: rgba(10,9,5,.55);
+      padding: .3rem .6rem; border-radius: 2px;
+      pointer-events: none;
+    }
+    @media (max-width: 640px) {
+      .event-videos { grid-template-columns: 1fr; }
+    }
+
     /* =====================================================
        LIGHTBOX
     ===================================================== */
@@ -1485,64 +1523,136 @@
       <h2 class="reveal d1">Cada evento,<br>uma obra única</h2>
       <p class="reveal d2">Do planejamento à execução, cada peça é criada especialmente para o seu momento.</p>
     </div>
-    <!-- Casa Tua Event Card -->
+    <!-- Casamento Event Card -->
     <div class="event-card reveal">
       <div class="event-card-header">
         <div class="event-card-meta">
-          <p class="event-card-type">Jantar Privado · Rio de Janeiro</p>
-          <p class="event-card-name">Casa Tua</p>
-          <p class="event-card-detail">Mesa de doces artesanais · Brigadeiros de pistache · Docinhos de rosa · 20 convidados</p>
+          <p class="event-card-type">Casamento</p>
+          <p class="event-card-name">Bolo &amp; Mesa de Doces</p>
+          <p class="event-card-detail">Bolo de casamento em andares · Brigadeiros, trufas e queijadinhas artesanais · Mesa espelhada</p>
         </div>
-        <span class="event-card-count">7 fotos</span>
+        <span class="event-card-count">10 fotos · 2 vídeos</span>
       </div>
-      <div class="event-thumbs" id="casatuaThumbs">
+      <div class="event-thumbs" id="casamentoThumbs">
         <div class="event-thumb" data-index="0">
-          <img src="casatua/casatua-10.webp" alt="Mesa principal — Casa Tua" loading="lazy" decoding="async">
+          <img src="casamento/casamento-1.webp" alt="Bolo de casamento sobre mesa espelhada — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="casatua/casatua-12.webp" alt="Mesa de doces — Casa Tua" loading="lazy" decoding="async">
+          <img src="casamento/casamento-2.webp" alt="Trufas de coco artesanais — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="casatua/casatua-100.webp" alt="Detalhes da mesa — Casa Tua" loading="lazy" decoding="async">
+          <img src="casamento/casamento-3.webp" alt="Doces artesanais na mesa de doces — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="casatua/casatua-103.webp" alt="Cardápio Casa Tua" loading="lazy" decoding="async">
+          <img src="casamento/casamento-4.webp" alt="Suportes de cristal com doces — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4" style="position:relative">
-          <img src="casatua/casatua-106.webp" alt="Doces artesanais — Casa Tua" loading="lazy" decoding="async">
+          <img src="casamento/casamento-5.webp" alt="Docinhos de doce de leite — Casamento" loading="lazy" decoding="async">
           <div class="event-thumb-more">Ver todas</div>
+        </div>
+      </div>
+      <div class="event-videos">
+        <div class="event-video">
+          <video src="casamento/casamento-video-1.mp4" poster="casamento/casamento-video-1-poster.webp" muted loop playsinline preload="none" aria-label="Vídeo da mesa de doces do casamento"></video>
+          <span class="event-video-tag">Vídeo · Mesa de doces</span>
+        </div>
+        <div class="event-video">
+          <video src="casamento/casamento-video-2.mp4" poster="casamento/casamento-video-2-poster.webp" muted loop playsinline preload="none" aria-label="Vídeo dos doces artesanais do casamento"></video>
+          <span class="event-video-tag">Vídeo · Doces artesanais</span>
         </div>
       </div>
     </div>
 
-    <!-- Candlelit Birthday Dinner Event Card -->
+    <!-- Casa Tua Venue Card — two separate events at the same venue -->
     <div class="event-card reveal">
       <div class="event-card-header">
         <div class="event-card-meta">
-          <p class="event-card-type">Aniversário · Rio de Janeiro</p>
-          <p class="event-card-name">Dassa Danna Evento</p>
-          <p class="event-card-detail">Bolo assinatura · Mesa de doces à luz de velas · Celebração íntima</p>
+          <p class="event-card-type">Dois Eventos · Rio de Janeiro</p>
+          <p class="event-card-name">Casa Tua</p>
+          <p class="event-card-detail">Dois projetos distintos realizados no mesmo endereço</p>
         </div>
-        <span class="event-card-count">6 fotos</span>
+        <span class="event-card-count">13 fotos</span>
+      </div>
+
+      <!-- Evento I — Jantar Privado -->
+      <div class="event-sub-header">
+        <div>
+          <p class="event-sub-title">Evento I — Jantar Privado</p>
+          <p class="event-sub-detail">Mesa de doces artesanais · Brigadeiros de pistache · Docinhos de rosa · 20 convidados</p>
+        </div>
+        <span class="event-sub-count">7 fotos</span>
+      </div>
+      <div class="event-thumbs" id="casatuaThumbs">
+        <div class="event-thumb" data-index="0">
+          <img src="casatua/casatua-10.webp" alt="Mesa principal — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="1">
+          <img src="casatua/casatua-12.webp" alt="Mesa de doces — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="2">
+          <img src="casatua/casatua-100.webp" alt="Detalhes da mesa — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="3">
+          <img src="casatua/casatua-103.webp" alt="Cardápio — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="4" style="position:relative">
+          <img src="casatua/casatua-106.webp" alt="Doces artesanais — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+          <div class="event-thumb-more">Ver todas</div>
+        </div>
+      </div>
+
+      <!-- Evento II — Aniversário à Luz de Velas -->
+      <div class="event-sub-header">
+        <div>
+          <p class="event-sub-title">Evento II — Aniversário à Luz de Velas</p>
+          <p class="event-sub-detail">Bolo assinatura · Mesa de doces à luz de velas · Celebração íntima</p>
+        </div>
+        <span class="event-sub-count">6 fotos</span>
       </div>
       <div class="event-thumbs even" id="eventosThumbs" style="--cols:3">
         <div class="event-thumb" data-index="0">
-          <img src="eventos/evento-1.webp" alt="Mesa posta à luz de velas — Dassa Danna Evento" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-1.webp" alt="Mesa posta à luz de velas — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="eventos/evento-2.webp" alt="Mesa do bolo com monograma — Dassa Danna Evento" width="1118" height="745" loading="lazy" decoding="async">
+          <img src="eventos/evento-2.webp" alt="Mesa do bolo com monograma — Aniversário na Casa Tua" width="1118" height="745" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="eventos/evento-7.webp" alt="Bolo assinatura entre velas flutuantes — Dassa Danna Evento" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-7.webp" alt="Bolo assinatura entre velas flutuantes — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="eventos/evento-8.webp" alt="Mesa do bolo e doces — Dassa Danna Evento" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-8.webp" alt="Mesa do bolo e doces — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4">
-          <img src="eventos/evento-5.webp" alt="Detalhe do monograma no bolo — Dassa Danna Evento" width="1118" height="745" loading="lazy" decoding="async">
+          <img src="eventos/evento-5.webp" alt="Detalhe do monograma no bolo — Aniversário na Casa Tua" width="1118" height="745" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="5">
-          <img src="eventos/evento-6.webp" alt="Mesa dos convidados à luz de velas — Dassa Danna Evento" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-6.webp" alt="Mesa dos convidados à luz de velas — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
+        </div>
+      </div>
+    </div>
+
+    <!-- Dassa Danna Event Card -->
+    <div class="event-card reveal">
+      <div class="event-card-header">
+        <div class="event-card-meta">
+          <p class="event-card-type">Evento de Marca · Joalheria</p>
+          <p class="event-card-name">Dassa Danna</p>
+          <p class="event-card-detail">Editorial de joias com macarons assinatura · Colaboração exclusiva</p>
+        </div>
+        <span class="event-card-count">4 fotos</span>
+      </div>
+      <div class="event-thumbs even" id="dassadannaThumbs" style="--cols:4">
+        <div class="event-thumb" data-index="0">
+          <img src="dassadanna/dassadanna-1.webp" alt="Torre de macarons com anéis de diamante — Dassa Danna" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="1">
+          <img src="dassadanna/dassadanna-2.webp" alt="Macarons pastel com pulseira de corações — Dassa Danna" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="2">
+          <img src="dassadanna/dassadanna-3.webp" alt="Macarons com anéis de noivado — Dassa Danna" loading="lazy" decoding="async">
+        </div>
+        <div class="event-thumb" data-index="3">
+          <img src="dassadanna/dassadanna-4.webp" alt="Macarons coloridos com joias de pedras preciosas — Dassa Danna" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -2155,22 +2265,40 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 ===================================================== */
 (function () {
   const galleries = {
+    casamentoThumbs: [
+      { src: 'casamento/casamento-1.webp',  alt: 'Bolo de casamento sobre mesa espelhada — Casamento' },
+      { src: 'casamento/casamento-2.webp',  alt: 'Trufas de coco artesanais — Casamento' },
+      { src: 'casamento/casamento-3.webp',  alt: 'Doces artesanais na mesa de doces — Casamento' },
+      { src: 'casamento/casamento-4.webp',  alt: 'Suportes de cristal com doces — Casamento' },
+      { src: 'casamento/casamento-5.webp',  alt: 'Docinhos de doce de leite — Casamento' },
+      { src: 'casamento/casamento-6.webp',  alt: 'Docinhos com chocolate — Casamento' },
+      { src: 'casamento/casamento-7.webp',  alt: 'Mesa de doces entre flores — Casamento' },
+      { src: 'casamento/casamento-8.webp',  alt: 'Trufas de chocolate — Casamento' },
+      { src: 'casamento/casamento-9.webp',  alt: 'Queijadinhas artesanais — Casamento' },
+      { src: 'casamento/casamento-10.webp', alt: 'Torta assinatura entre orquídeas — Casamento' },
+    ],
     casatuaThumbs: [
-      { src: 'casatua/casatua-10.webp',  alt: 'Mesa principal — Casa Tua' },
-      { src: 'casatua/casatua-12.webp',  alt: 'Mesa de doces — Casa Tua' },
-      { src: 'casatua/casatua-100.webp', alt: 'Detalhes da mesa — Casa Tua' },
-      { src: 'casatua/casatua-103.webp', alt: 'Cardápio Casa Tua' },
-      { src: 'casatua/casatua-106.webp', alt: 'Doces artesanais — Casa Tua' },
-      { src: 'casatua/casatua-108.webp', alt: 'Docinhos de rosa — Casa Tua' },
-      { src: 'casatua/casatua-109.webp', alt: 'Trufas de pistache — Casa Tua' },
+      { src: 'casatua/casatua-10.webp',  alt: 'Mesa principal — Jantar privado na Casa Tua' },
+      { src: 'casatua/casatua-12.webp',  alt: 'Mesa de doces — Jantar privado na Casa Tua' },
+      { src: 'casatua/casatua-100.webp', alt: 'Detalhes da mesa — Jantar privado na Casa Tua' },
+      { src: 'casatua/casatua-103.webp', alt: 'Cardápio — Jantar privado na Casa Tua' },
+      { src: 'casatua/casatua-106.webp', alt: 'Doces artesanais — Jantar privado na Casa Tua' },
+      { src: 'casatua/casatua-108.webp', alt: 'Docinhos de rosa — Jantar privado na Casa Tua' },
+      { src: 'casatua/casatua-109.webp', alt: 'Trufas de pistache — Jantar privado na Casa Tua' },
     ],
     eventosThumbs: [
-      { src: 'eventos/evento-1.webp', alt: 'Mesa posta à luz de velas — Dassa Danna Evento' },
-      { src: 'eventos/evento-2.webp', alt: 'Mesa do bolo com monograma — Dassa Danna Evento' },
-      { src: 'eventos/evento-7.webp', alt: 'Bolo assinatura entre velas flutuantes — Dassa Danna Evento' },
-      { src: 'eventos/evento-8.webp', alt: 'Mesa do bolo e doces — Dassa Danna Evento' },
-      { src: 'eventos/evento-5.webp', alt: 'Detalhe do monograma no bolo — Dassa Danna Evento' },
-      { src: 'eventos/evento-6.webp', alt: 'Mesa dos convidados à luz de velas — Dassa Danna Evento' },
+      { src: 'eventos/evento-1.webp', alt: 'Mesa posta à luz de velas — Aniversário na Casa Tua' },
+      { src: 'eventos/evento-2.webp', alt: 'Mesa do bolo com monograma — Aniversário na Casa Tua' },
+      { src: 'eventos/evento-7.webp', alt: 'Bolo assinatura entre velas flutuantes — Aniversário na Casa Tua' },
+      { src: 'eventos/evento-8.webp', alt: 'Mesa do bolo e doces — Aniversário na Casa Tua' },
+      { src: 'eventos/evento-5.webp', alt: 'Detalhe do monograma no bolo — Aniversário na Casa Tua' },
+      { src: 'eventos/evento-6.webp', alt: 'Mesa dos convidados à luz de velas — Aniversário na Casa Tua' },
+    ],
+    dassadannaThumbs: [
+      { src: 'dassadanna/dassadanna-1.webp', alt: 'Torre de macarons com anéis de diamante — Dassa Danna' },
+      { src: 'dassadanna/dassadanna-2.webp', alt: 'Macarons pastel com pulseira de corações — Dassa Danna' },
+      { src: 'dassadanna/dassadanna-3.webp', alt: 'Macarons com anéis de noivado — Dassa Danna' },
+      { src: 'dassadanna/dassadanna-4.webp', alt: 'Macarons coloridos com joias de pedras preciosas — Dassa Danna' },
     ],
     carolbassiThumbs: [
       { src: 'carolbassi/carolbassi-1.webp', alt: 'Convidadas na boutique — Evento Carol Bassi' },
@@ -2268,6 +2396,26 @@ document.querySelectorAll('.event-thumb img').forEach(function (img) {
     img.addEventListener('error', reveal, { once: true }); // show alt text instead of an invisible box
   }
 });
+
+/* =====================================================
+   EVENT VIDEOS — play while visible, pause off-screen
+===================================================== */
+(function () {
+  const videos = document.querySelectorAll('.event-video video');
+  if (!videos.length) return;
+  if (!('IntersectionObserver' in window)) {
+    videos.forEach(v => { v.preload = 'metadata'; v.play().catch(() => {}); });
+    return;
+  }
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const v = entry.target;
+      if (entry.isIntersecting) v.play().catch(() => {});
+      else v.pause();
+    });
+  }, { threshold: 0.25 });
+  videos.forEach(v => io.observe(v));
+})();
 
 /* =====================================================
    LOGO — strip white/near-white background via canvas
