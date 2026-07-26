@@ -1025,39 +1025,64 @@
       margin-top: clamp(2.5rem,6vh,4rem);
     }
     .test-card {
-      background: var(--bg-3);
-      border: 1px solid var(--line-sub); border-radius: 3px;
-      overflow: hidden; transition: border-color .3s;
+      position: relative;
+      background:
+        radial-gradient(140% 100% at 100% 0%, rgba(201,169,110,.07), transparent 60%),
+        var(--bg-3);
+      border: 1px solid var(--line-sub); border-radius: 4px;
+      overflow: hidden; transition: border-color .45s var(--ease-lux), transform .45s var(--ease-lux), box-shadow .45s var(--ease-lux);
+      padding: clamp(2.25rem,4vw,3rem) clamp(1.85rem,3.5vw,2.5rem);
+      display: flex; flex-direction: column;
     }
-    .test-card:hover { border-color: var(--line); }
-    .test-img {
-      aspect-ratio: 16/9; overflow: hidden;
-    }
-    .test-img img {
-      width: 100%; height: 100%; object-fit: cover;
+    .test-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      transform: scaleX(0); transform-origin: center;
       transition: transform .6s var(--ease-lux);
     }
-    .test-card:hover .test-img img { transform: scale(1.04); }
-    .test-body { padding: 1.5rem; }
-    .test-event {
-      font-size: .58rem; font-weight: 500; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--gold); margin-bottom: .7rem;
+    .test-card:hover::before { transform: scaleX(1); }
+    .test-card:hover {
+      border-color: var(--line);
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -20px rgba(0,0,0,.55), 0 0 0 1px rgba(201,169,110,.08);
     }
+    .test-mark {
+      position: absolute; top: -.4rem; right: 1.25rem;
+      font-family: var(--serif); font-style: italic; font-weight: 400;
+      font-size: 7rem; line-height: 1; color: var(--gold);
+      opacity: .1; pointer-events: none; user-select: none;
+      transition: opacity .45s var(--ease-lux);
+    }
+    .test-card:hover .test-mark { opacity: .18; }
+    .test-stars { display: flex; gap: .2rem; margin-bottom: 1.1rem; }
+    .test-stars svg { width: .8rem; height: .8rem; fill: var(--gold); }
     .test-quote {
+      position: relative;
       font-family: var(--serif);
-      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-size: clamp(1.05rem, 2.2vw, 1.28rem);
       font-weight: 300; font-style: italic;
-      line-height: 1.65; color: var(--ivory); margin-bottom: 1.25rem;
+      line-height: 1.65; color: var(--ivory); margin-bottom: 1.75rem;
+      flex-grow: 1;
     }
-    .test-divider { height: 1px; background: var(--line-sub); margin-bottom: 1.1rem; }
+    .test-divider {
+      height: 1px; margin-bottom: 1.15rem;
+      background: linear-gradient(90deg, var(--line), transparent);
+    }
     .test-foot {
-      display: flex; justify-content: space-between; align-items: flex-end;
+      display: flex; align-items: center; gap: 1rem;
     }
-    .test-name { font-weight: 500; font-size: .85rem; color: var(--text); }
-    .test-ctx { font-size: .72rem; color: var(--text-2); margin-top: .15rem; }
-    .test-year {
-      font-size: .62rem; font-weight: 500; letter-spacing: .12em;
-      text-transform: uppercase; color: var(--text-3);
+    .test-avatar {
+      width: 2.6rem; height: 2.6rem; border-radius: 50%;
+      flex-shrink: 0; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      font-family: var(--serif); font-style: italic; font-size: 1.1rem; color: var(--gold-lt);
+    }
+    .test-name { font-weight: 500; font-size: .88rem; color: var(--text); letter-spacing: .01em; }
+    .test-badge {
+      font-size: .58rem; font-weight: 500; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--text-3); margin-top: .2rem;
     }
 
     /* =====================================================
@@ -1287,7 +1312,7 @@
       .port-item:nth-child(3) { grid-column: span 4; aspect-ratio: 3/4; }
       .port-item:nth-child(4) { grid-column: span 8; aspect-ratio: 16/9; }
 
-      .test-grid { grid-template-columns: repeat(3, 1fr); }
+      .test-grid { grid-template-columns: repeat(2, 1fr); }
       .svc-grid { grid-template-columns: repeat(3, 1fr); }
       .btn-submit { width: auto; min-width: 250px; }
     }
@@ -1887,70 +1912,89 @@
     <div class="test-grid">
 
       <article class="test-card reveal">
-        <div class="test-img">
-          <img
-            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80&auto=format&fit=crop"
-            alt="Casamento Ana e Rafael — Grand Hyatt Rio de Janeiro"
-            width="800" height="450" loading="lazy" decoding="async">
+        <span class="test-mark" aria-hidden="true">&ldquo;</span>
+        <div class="test-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
         </div>
-        <div class="test-body">
-          <p class="test-event">Casamento · Grand Hyatt Rio de Janeiro</p>
-          <blockquote class="test-quote">
-            "Três anos depois, os convidados ainda perguntam onde fizemos o bolo. Renata não entregou um bolo — ela entregou uma memória que todos carregaram para casa."
-          </blockquote>
-          <div class="test-divider"></div>
-          <div class="test-foot">
-            <div>
-              <p class="test-name">Ana & Rafael Monteiro</p>
-              <p class="test-ctx">Casamento · 280 convidados</p>
-            </div>
-            <span class="test-year">2022</span>
+        <blockquote class="test-quote">
+          Obrigada pelo melhor bolo da minha vida! MARAVILHOSO!
+        </blockquote>
+        <div class="test-divider"></div>
+        <div class="test-foot">
+          <span class="test-avatar" aria-hidden="true">A</span>
+          <div>
+            <p class="test-name">Adriana Medeiros</p>
+            <p class="test-badge">Cliente Renata Estrella</p>
           </div>
         </div>
       </article>
 
       <article class="test-card reveal d1">
-        <div class="test-img">
-          <img
-            src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800&q=80&auto=format&fit=crop"
-            alt="Evento corporativo de luxo"
-            width="800" height="450" loading="lazy" decoding="async">
+        <span class="test-mark" aria-hidden="true">&ldquo;</span>
+        <div class="test-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
         </div>
-        <div class="test-body">
-          <p class="test-event">Evento Corporativo · Rio de Janeiro</p>
-          <blockquote class="test-quote">
-            "O CEO nos perguntou quem fez os doces antes mesmo de perguntar o nome do buffet. Foi o único elemento do evento que ele mencionou no e-mail de agradecimento."
-          </blockquote>
-          <div class="test-divider"></div>
-          <div class="test-foot">
-            <div>
-              <p class="test-name">Claudia Ferreira</p>
-              <p class="test-ctx">Head de Eventos · Empresa de Tech</p>
-            </div>
-            <span class="test-year">2023</span>
+        <blockquote class="test-quote">
+          A decoração foi linda e todos amaram tudo! Muito obrigada por realizar tudo com tanta perfeição!
+        </blockquote>
+        <div class="test-divider"></div>
+        <div class="test-foot">
+          <span class="test-avatar" aria-hidden="true">I</span>
+          <div>
+            <p class="test-name">Isabella Chen</p>
+            <p class="test-badge">Cliente Renata Estrella</p>
           </div>
         </div>
       </article>
 
       <article class="test-card reveal d2">
-        <div class="test-img">
-          <img
-            src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=800&q=80&auto=format&fit=crop"
-            alt="Debutante — Hotel Fasano"
-            width="800" height="450" loading="lazy" decoding="async">
+        <span class="test-mark" aria-hidden="true">&ldquo;</span>
+        <div class="test-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
         </div>
-        <div class="test-body">
-          <p class="test-event">Debutante · Hotel Fasano Rio</p>
-          <blockquote class="test-quote">
-            "Minha filha tinha um sonho muito específico. Renata não só entendeu esse sonho — ela o transformou em algo ainda mais bonito do que imaginávamos. Isso é arte."
-          </blockquote>
-          <div class="test-divider"></div>
-          <div class="test-foot">
-            <div>
-              <p class="test-name">Beatriz Nogueira</p>
-              <p class="test-ctx">Mãe da debutante · 150 convidados</p>
-            </div>
-            <span class="test-year">2023</span>
+        <blockquote class="test-quote">
+          Você é fora da curva! O bolo estava sensacional e os brigadeiros estavam maravilhosos!
+        </blockquote>
+        <div class="test-divider"></div>
+        <div class="test-foot">
+          <span class="test-avatar" aria-hidden="true">M</span>
+          <div>
+            <p class="test-name">Mariana Diniz</p>
+            <p class="test-badge">Cliente Renata Estrella</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="test-card reveal d3">
+        <span class="test-mark" aria-hidden="true">&ldquo;</span>
+        <div class="test-stars" aria-hidden="true">
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+          <svg viewBox="0 0 20 20"><path d="M10 1l2.6 5.6 6.1.6-4.6 4.1 1.3 6-5.4-3.1-5.4 3.1 1.3-6-4.6-4.1 6.1-.6z"/></svg>
+        </div>
+        <blockquote class="test-quote">
+          Muito obrigado por sempre fazer tudo com tanto amor e carinho! Todo mundo se apaixonou pelos doces!
+        </blockquote>
+        <div class="test-divider"></div>
+        <div class="test-foot">
+          <span class="test-avatar" aria-hidden="true">D</span>
+          <div>
+            <p class="test-name">Dassa Dana</p>
+            <p class="test-badge">Cliente Renata Estrella</p>
           </div>
         </div>
       </article>
