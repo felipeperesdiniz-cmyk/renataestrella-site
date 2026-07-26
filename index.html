@@ -2329,20 +2329,45 @@ function goChapter(i) {
   cur = i;
 }
 
-window.addEventListener('scroll', () => {
+// Cache the driver's document-relative offset instead of calling
+// getBoundingClientRect() on every scroll event — that forces a
+// synchronous layout on every tick, which under a fast fling can
+// drop frames and make the chapter cross-fade look like it skips.
+let driverTop = 0, driverHeight = 0;
+function measureDriver() {
   if (!driver) return;
-  const rect = driver.getBoundingClientRect();
-  const total = driver.offsetHeight - window.innerHeight;
-  const scrolled = -rect.top;
-  if (scrolled < 0 || scrolled > total) return;
-  goChapter(Math.min(Math.floor((scrolled / total) * 4), 3));
+  driverTop = driver.getBoundingClientRect().top + window.scrollY;
+  driverHeight = driver.offsetHeight;
+}
+measureDriver();
+window.addEventListener('resize', measureDriver, { passive: true });
+window.addEventListener('load', measureDriver);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureDriver);
+
+let chapterTicking = false;
+function updateChapter() {
+  chapterTicking = false;
+  if (!driver || driverHeight === 0) return;
+  const total = driverHeight - window.innerHeight;
+  if (total <= 0) return;
+  const scrolled = window.scrollY - driverTop;
+  // A fast fling can land the one scroll event we get outside 0..total
+  // entirely — clamp to the nearest chapter instead of silently
+  // bailing out, so the section never gets stuck mid-transition.
+  const clamped = Math.max(0, Math.min(scrolled, total));
+  goChapter(Math.min(Math.floor((clamped / total) * 4), 3));
+}
+window.addEventListener('scroll', () => {
+  if (chapterTicking) return;
+  chapterTicking = true;
+  requestAnimationFrame(updateChapter);
 }, { passive: true });
 
 document.querySelectorAll('.f-dot').forEach((dot, i) => {
   const go = () => {
-    const rect  = driver.getBoundingClientRect();
-    const total = driver.offsetHeight - window.innerHeight;
-    const target = window.scrollY + rect.top + (i / 4) * total + window.innerHeight * 0.05;
+    measureDriver();
+    const total = driverHeight - window.innerHeight;
+    const target = driverTop + (i / 4) * total + window.innerHeight * 0.05;
     window.scrollTo({ top: target, behavior: 'smooth' });
   };
   dot.addEventListener('click', go);
