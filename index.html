@@ -9,7 +9,7 @@
   <meta name="description" content="Pâtisserie de luxo no Rio de Janeiro: bolos e doces artesanais para casamentos e eventos de alto padrão, com formação Ferrandi Paris e Ritz Escoffier.">
   <meta name="keywords" content="pâtisserie luxo, confeitaria premium Rio de Janeiro, bolo de casamento luxo, Ferrandi Paris, Le Cordon Bleu, alta confeitaria, eventos alto padrão">
   <link rel="canonical" href="https://www.renatapatisserie.com.br/">
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="author" content="Renata Pâtisserie">
   <meta name="theme-color" content="#0A0905">
 
@@ -46,7 +46,15 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "LocalBusiness",
+        "@type": "WebSite",
+        "@id": "https://www.renatapatisserie.com.br/#website",
+        "url": "https://www.renatapatisserie.com.br/",
+        "name": "Renata Pâtisserie",
+        "inLanguage": "pt-BR",
+        "publisher": {"@id": "https://www.renatapatisserie.com.br/#business"}
+      },
+      {
+        "@type": "Bakery",
         "@id": "https://www.renatapatisserie.com.br/#business",
         "name": "Renata Pâtisserie",
         "description": "Pâtisserie de luxo especializada em criações artesanais para casamentos, eventos corporativos e celebrações de alto padrão.",
@@ -62,6 +70,10 @@
           "addressCountry": "BR"
         },
         "geo": {"@type": "GeoCoordinates", "latitude": "-22.9068", "longitude": "-43.1729"},
+        "areaServed": [
+          {"@type": "Country", "name": "Brasil"},
+          {"@type": "City", "name": "Rio de Janeiro"}
+        ],
         "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens": "09:00","closes": "18:00"}],
         "sameAs": ["https://www.instagram.com/renataestrella.patisserie"]
       },
@@ -82,20 +94,32 @@
         "@type": "Service",
         "name": "Bolos e Doces para Casamentos",
         "description": "Criações artesanais únicas para o dia mais especial da sua vida.",
-        "provider": {"@id": "https://www.renatapatisserie.com.br/#business"}
+        "provider": {"@id": "https://www.renatapatisserie.com.br/#business"},
+        "areaServed": {"@type": "Country", "name": "Brasil"}
       },
       {
         "@type": "Service",
         "name": "Confeitaria para Eventos Corporativos",
         "description": "Experiências gastronômicas de alto padrão para eventos executivos e lançamentos.",
-        "provider": {"@id": "https://www.renatapatisserie.com.br/#business"}
+        "provider": {"@id": "https://www.renatapatisserie.com.br/#business"},
+        "areaServed": {"@type": "Country", "name": "Brasil"}
+      },
+      {
+        "@type": "Service",
+        "name": "Celebrações Privadas",
+        "description": "Aniversários, formaturas e marcos íntimos celebrados com confeitaria de alto padrão.",
+        "provider": {"@id": "https://www.renatapatisserie.com.br/#business"},
+        "areaServed": {"@type": "Country", "name": "Brasil"}
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          {"@type": "Question","name": "Com quanto tempo de antecedência devo entrar em contato?","acceptedAnswer": {"@type": "Answer","text": "Para casamentos recomendamos 6 a 12 meses. Para eventos corporativos e celebrações, mínimo de 60 dias."}},
-          {"@type": "Question","name": "Vocês atendem fora de Rio de Janeiro?","acceptedAnswer": {"@type": "Answer","text": "Sim. Atendemos em todo o Brasil e em destinos internacionais para projetos especiais."}},
-          {"@type": "Question","name": "Como funciona a reserva e a retirada?","acceptedAnswer": {"@type": "Answer","text": "A reserva é confirmada com um sinal de 50%, restante até 10 dias antes do evento. Retirada no ateliê na Barra da Tijuca; entrega privada sob consulta."}}
+          {"@type": "Question","name": "Com quanto tempo de antecedência devo entrar em contato?","acceptedAnswer": {"@type": "Answer","text": "Para casamentos e grandes eventos, recomendamos contato com 6 a 12 meses de antecedência. Para celebrações privadas e eventos corporativos, o prazo mínimo é de 60 dias. Isso garante tempo para consultoria, desenvolvimento do conceito, degustação e produção."}},
+          {"@type": "Question","name": "Como funciona o processo de criação?","acceptedAnswer": {"@type": "Answer","text": "Começa com uma consultoria onde Renata entende a visão, tema e preferências do cliente. Em seguida, é desenvolvido um briefing criativo exclusivo para aprovação. Após isso, é realizada uma sessão de degustação. Na semana do evento, a produção e montagem são feitas pessoalmente no local."}},
+          {"@type": "Question","name": "Vocês atendem fora de Rio de Janeiro?","acceptedAnswer": {"@type": "Answer","text": "Sim. Renata atende eventos em todo o Brasil e em destinos internacionais para projetos especiais, incluindo Rio de Janeiro, Florianópolis, Trancoso e Portugal. Custos de deslocamento e logística são detalhados durante a consultoria."}},
+          {"@type": "Question","name": "Quais são os valores para um projeto?","acceptedAnswer": {"@type": "Answer","text": "Cada projeto é orçado individualmente, pois depende da complexidade, número de convidados e localização. Os valores são apresentados durante a consultoria inicial, sem compromisso."}},
+          {"@type": "Question","name": "Como funciona a reserva e a retirada?","acceptedAnswer": {"@type": "Answer","text": "A reserva é confirmada com um sinal de 50% via transferência ou Pix, e o restante até 10 dias antes do evento. Doces finos têm produção limitada, com mínimo de 20 unidades por sabor. A retirada é feita no ateliê, na Barra da Tijuca, em horário reservado; entrega privada disponível sob consulta."}},
+          {"@type": "Question","name": "É possível acomodar restrições alimentares?","acceptedAnswer": {"@type": "Answer","text": "Sim. Renata tem experiência com criações sem glúten, sem lactose e veganas, sem comprometer o padrão estético ou de sabor. Todas as restrições são detalhadas na consultoria e incorporadas ao briefing do projeto."}}
         ]
       }
     ]
