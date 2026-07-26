@@ -94,7 +94,8 @@
         "@type": "FAQPage",
         "mainEntity": [
           {"@type": "Question","name": "Com quanto tempo de antecedência devo entrar em contato?","acceptedAnswer": {"@type": "Answer","text": "Para casamentos recomendamos 6 a 12 meses. Para eventos corporativos e celebrações, mínimo de 60 dias."}},
-          {"@type": "Question","name": "Vocês atendem fora de Rio de Janeiro?","acceptedAnswer": {"@type": "Answer","text": "Sim. Atendemos em todo o Brasil e em destinos internacionais para projetos especiais."}}
+          {"@type": "Question","name": "Vocês atendem fora de Rio de Janeiro?","acceptedAnswer": {"@type": "Answer","text": "Sim. Atendemos em todo o Brasil e em destinos internacionais para projetos especiais."}},
+          {"@type": "Question","name": "Como funciona a reserva e a retirada?","acceptedAnswer": {"@type": "Answer","text": "A reserva é confirmada com um sinal de 50%, restante até 10 dias antes do evento. Retirada no ateliê na Barra da Tijuca; entrega privada sob consulta."}}
         ]
       }
     ]
@@ -151,6 +152,16 @@
     a { color: inherit; text-decoration: none; }
     ul, ol { list-style: none; }
     button { border: none; background: none; font-family: inherit; }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem; z-index: 9999;
+      background: var(--gold); color: var(--bg);
+      font-family: var(--sans); font-size: .75rem; font-weight: 600;
+      letter-spacing: .04em;
+      padding: .8rem 1.4rem; border-radius: 2px;
+      transition: top .2s var(--ease-out);
+    }
+    .skip-link:focus { top: 1rem; }
 
     /* =====================================================
        UTILITIES
@@ -304,27 +315,28 @@
       display: none; gap: 2.5rem; align-items: center;
     }
     .nav__links a {
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
+      font-size: 0.74rem; font-weight: 500; letter-spacing: 0.16em;
       text-transform: uppercase; color: var(--ivory-2);
       transition: color .3s;
     }
     .nav__links a:hover { color: var(--gold); }
     .nav__cta {
-      font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em;
+      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
       text-transform: uppercase; color: var(--bg);
       background: var(--gold); padding: .6rem 1.5rem;
       border-radius: 2px; transition: background .3s;
     }
     .nav__cta:hover { background: var(--gold-lt); }
     .nav__burger {
-      display: flex; flex-direction: column; gap: 5px;
-      width: 22px; padding: 4px 0;
+      display: flex; flex-direction: column; justify-content: center; align-items: flex-end;
+      gap: 5px; width: 44px; height: 44px; padding: 0; margin-right: -11px;
     }
+    .nav__burger span { width: 22px; }
     .nav__burger span {
       display: block; height: 1px; background: var(--ivory);
       transition: transform .3s, opacity .3s, width .3s;
     }
-    .nav__burger span:nth-child(2) { width: 65%; }
+    .nav__burger span:nth-child(2) { width: 14px; }
     .nav__burger.x span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
     .nav__burger.x span:nth-child(2) { opacity: 0; width: 0; }
     .nav__burger.x span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
@@ -424,7 +436,7 @@
     }
     .btn-gold {
       display: inline-flex; align-items: center; gap: .7rem;
-      font-size: .62rem; font-weight: 500; letter-spacing: .2em;
+      font-size: .68rem; font-weight: 500; letter-spacing: .18em;
       text-transform: uppercase; color: var(--bg);
       background: var(--gold); padding: 1rem 2rem; border-radius: 2px;
       transition: background .3s, transform .2s;
@@ -432,7 +444,7 @@
     .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
     .btn-outline {
       display: inline-flex; align-items: center; gap: .7rem;
-      font-size: .62rem; font-weight: 500; letter-spacing: .2em;
+      font-size: .68rem; font-weight: 500; letter-spacing: .18em;
       text-transform: uppercase; color: var(--ivory);
       padding: 1rem 2rem; border: 1px solid var(--line); border-radius: 2px;
       transition: border-color .3s, color .3s, transform .2s;
@@ -644,6 +656,10 @@
       margin-top: .75rem; margin-bottom: .75rem;
     }
     .sec-header p { font-size: .9rem; color: var(--text-2); max-width: 44ch; }
+    .sec-title-lg {
+      font-family: var(--serif); font-size: clamp(1.9rem,4.5vw,3.5rem);
+      font-weight: 300; line-height: 1.15; color: var(--ivory); margin-top: .75rem;
+    }
 
     .port-grid {
       display: grid;
@@ -863,10 +879,19 @@
     }
 
     /* Tab bar */
+    .menu-tabs-wrap {
+      position: relative;
+      margin-bottom: clamp(2.5rem,6vh,4rem);
+    }
+    .menu-tabs-wrap::after {
+      content: ''; position: absolute; top: 0; right: 0; bottom: 1px; width: 2.75rem;
+      background: linear-gradient(to right, transparent, var(--bg) 80%);
+      pointer-events: none; opacity: 0; transition: opacity .3s;
+    }
+    .menu-tabs-wrap.has-more::after { opacity: 1; }
     .menu-tabs {
       display: flex; gap: 0;
       border-bottom: 1px solid var(--line-sub);
-      margin-bottom: clamp(2.5rem,6vh,4rem);
       overflow-x: auto; scrollbar-width: none;
     }
     .menu-tabs::-webkit-scrollbar { display: none; }
@@ -1213,19 +1238,19 @@
       display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
     }
     .foot-links a {
-      font-size: .66rem; font-weight: 500; letter-spacing: .15em;
+      font-size: .72rem; font-weight: 500; letter-spacing: .13em;
       text-transform: uppercase; color: var(--text-2); transition: color .3s;
     }
     .foot-links a:hover { color: var(--gold); }
     .foot-social { display: flex; justify-content: center; gap: .75rem; }
     .foot-social a {
-      width: 34px; height: 34px;
+      width: 44px; height: 44px;
       border: 1px solid var(--line-sub); border-radius: 2px;
       display: flex; align-items: center; justify-content: center;
       color: var(--text-2); transition: border-color .3s, color .3s;
     }
     .foot-social a:hover { border-color: var(--gold); color: var(--gold); }
-    .foot-copy { font-size: .68rem; color: var(--text-3); }
+    .foot-copy { font-size: .74rem; color: var(--text-3); }
 
     /* =====================================================
        SCROLL REVEAL
@@ -1298,9 +1323,10 @@
     }
   </style>
   <link rel="preload" as="image" href="hero-poster.jpg" fetchpriority="high">
-  <link rel="preload" as="video" href="hero-video.webm" type="video/webm" fetchpriority="high">
 </head>
 <body>
+
+<a href="#hero" class="skip-link">Pular para o conteúdo</a>
 
 <!-- Intro Panel -->
 <div id="introPanel" aria-hidden="true" role="presentation">
@@ -1316,6 +1342,19 @@
     <span class="intro-hint-label">Deslize</span>
   </div>
 </div>
+
+<!-- Standalone safety net: guarantees the page becomes usable even if the
+     main script below fails or is slow on a weak device. Independent of
+     everything else so one broken statement elsewhere can't trap a visitor
+     behind a locked, invisible page. -->
+<script>
+  setTimeout(function () {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('vis'); });
+    document.body.classList.remove('intro-lock');
+    var p = document.getElementById('introPanel');
+    if (p) p.style.display = 'none';
+  }, 6000);
+</script>
 
 <!-- Lightbox -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Galeria de fotos">
@@ -1367,13 +1406,14 @@
 <section id="hero" aria-label="Introdução — Renata Pâtisserie">
   <div class="hero-media" aria-hidden="true">
     <video
+      id="heroVideo"
       class="hero-video"
-      autoplay loop muted playsinline
+      loop muted playsinline
       poster="hero-poster.jpg"
-      preload="auto"
+      preload="none"
     >
-      <source src="hero-video.webm" type="video/webm">
-      <source src="hero-video.mp4"  type="video/mp4">
+      <source data-src="hero-video.webm" type="video/webm">
+      <source data-src="hero-video.mp4"  type="video/mp4">
       <img
         class="hero-img"
         src="hero-poster.jpg"
@@ -1554,19 +1594,19 @@
       </div>
       <div class="event-thumbs" id="casamentoThumbs">
         <div class="event-thumb" data-index="0">
-          <img src="casamento/casamento-1.webp" alt="Bolo de casamento sobre mesa espelhada — Casamento" loading="lazy" decoding="async">
+          <img src="casamento/casamento-1.webp" srcset="casamento/casamento-1-sm.webp 640w, casamento/casamento-1.webp 1600w" sizes="(min-width: 900px) 340px, 45vw" alt="Bolo de casamento sobre mesa espelhada — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="casamento/casamento-2.webp" alt="Trufas de coco artesanais — Casamento" loading="lazy" decoding="async">
+          <img src="casamento/casamento-2.webp" srcset="casamento/casamento-2-sm.webp 640w, casamento/casamento-2.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Trufas de coco artesanais — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="casamento/casamento-3.webp" alt="Doces artesanais na mesa de doces — Casamento" loading="lazy" decoding="async">
+          <img src="casamento/casamento-3.webp" srcset="casamento/casamento-3-sm.webp 640w, casamento/casamento-3.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Doces artesanais na mesa de doces — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="casamento/casamento-4.webp" alt="Suportes de cristal com doces — Casamento" loading="lazy" decoding="async">
+          <img src="casamento/casamento-4.webp" srcset="casamento/casamento-4-sm.webp 640w, casamento/casamento-4.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Suportes de cristal com doces — Casamento" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4" style="position:relative">
-          <img src="casamento/casamento-5.webp" alt="Docinhos de doce de leite — Casamento" loading="lazy" decoding="async">
+          <img src="casamento/casamento-5.webp" srcset="casamento/casamento-5-sm.webp 640w, casamento/casamento-5.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Docinhos de doce de leite — Casamento" loading="lazy" decoding="async">
           <div class="event-thumb-more">Ver todas</div>
         </div>
       </div>
@@ -1593,19 +1633,19 @@
       </div>
       <div class="event-thumbs" id="casatuaThumbs">
         <div class="event-thumb" data-index="0">
-          <img src="casatua/casatua-10.webp" alt="Mesa principal — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+          <img src="casatua/casatua-10.webp" srcset="casatua/casatua-10-sm.webp 640w, casatua/casatua-10.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Mesa principal — Jantar privado na Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="casatua/casatua-12.webp" alt="Mesa de doces — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+          <img src="casatua/casatua-12.webp" srcset="casatua/casatua-12-sm.webp 640w, casatua/casatua-12.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Mesa de doces — Jantar privado na Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="casatua/casatua-100.webp" alt="Detalhes da mesa — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+          <img src="casatua/casatua-100.webp" srcset="casatua/casatua-100-sm.webp 640w, casatua/casatua-100.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Detalhes da mesa — Jantar privado na Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="casatua/casatua-103.webp" alt="Cardápio — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+          <img src="casatua/casatua-103.webp" srcset="casatua/casatua-103-sm.webp 640w, casatua/casatua-103.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Cardápio — Jantar privado na Casa Tua" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4" style="position:relative">
-          <img src="casatua/casatua-106.webp" alt="Doces artesanais — Jantar privado na Casa Tua" loading="lazy" decoding="async">
+          <img src="casatua/casatua-106.webp" srcset="casatua/casatua-106-sm.webp 640w, casatua/casatua-106.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Doces artesanais — Jantar privado na Casa Tua" loading="lazy" decoding="async">
           <div class="event-thumb-more">Ver todas</div>
         </div>
       </div>
@@ -1620,22 +1660,22 @@
       </div>
       <div class="event-thumbs even" id="eventosThumbs" style="--cols:3">
         <div class="event-thumb" data-index="0">
-          <img src="eventos/evento-1.webp" alt="Mesa posta à luz de velas — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-1.webp" srcset="eventos/evento-1-sm.webp 640w, eventos/evento-1.webp 1280w" sizes="(min-width: 900px) 340px, 45vw" alt="Mesa posta à luz de velas — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="eventos/evento-2.webp" alt="Mesa do bolo com monograma — Aniversário na Casa Tua" width="1118" height="745" loading="lazy" decoding="async">
+          <img src="eventos/evento-2.webp" srcset="eventos/evento-2-sm.webp 640w, eventos/evento-2.webp 1118w" sizes="(min-width: 900px) 340px, 45vw" alt="Mesa do bolo com monograma — Aniversário na Casa Tua" width="1118" height="745" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="eventos/evento-7.webp" alt="Bolo assinatura entre velas flutuantes — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-7.webp" srcset="eventos/evento-7-sm.webp 640w, eventos/evento-7.webp 1280w" sizes="(min-width: 900px) 340px, 45vw" alt="Bolo assinatura entre velas flutuantes — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="eventos/evento-8.webp" alt="Mesa do bolo e doces — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-8.webp" srcset="eventos/evento-8-sm.webp 640w, eventos/evento-8.webp 1280w" sizes="(min-width: 900px) 340px, 45vw" alt="Mesa do bolo e doces — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4">
-          <img src="eventos/evento-5.webp" alt="Detalhe do monograma no bolo — Aniversário na Casa Tua" width="1118" height="745" loading="lazy" decoding="async">
+          <img src="eventos/evento-5.webp" srcset="eventos/evento-5-sm.webp 640w, eventos/evento-5.webp 1280w" sizes="(min-width: 900px) 340px, 45vw" alt="Detalhe do monograma no bolo — Aniversário na Casa Tua" width="1118" height="745" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="5">
-          <img src="eventos/evento-6.webp" alt="Mesa dos convidados à luz de velas — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
+          <img src="eventos/evento-6.webp" srcset="eventos/evento-6-sm.webp 640w, eventos/evento-6.webp 1280w" sizes="(min-width: 900px) 340px, 45vw" alt="Mesa dos convidados à luz de velas — Aniversário na Casa Tua" width="1280" height="852" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1652,16 +1692,16 @@
       </div>
       <div class="event-thumbs even" id="dassadannaThumbs" style="--cols:4">
         <div class="event-thumb" data-index="0">
-          <img src="dassadanna/dassadanna-1.webp" alt="Torre de macarons com anéis de diamante — Dassa Danna" loading="lazy" decoding="async">
+          <img src="dassadanna/dassadanna-1.webp" srcset="dassadanna/dassadanna-1-sm.webp 640w, dassadanna/dassadanna-1.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Torre de macarons com anéis de diamante — Dassa Danna" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="dassadanna/dassadanna-2.webp" alt="Macarons pastel com pulseira de corações — Dassa Danna" loading="lazy" decoding="async">
+          <img src="dassadanna/dassadanna-2.webp" srcset="dassadanna/dassadanna-2-sm.webp 640w, dassadanna/dassadanna-2.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Macarons pastel com pulseira de corações — Dassa Danna" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="dassadanna/dassadanna-3.webp" alt="Macarons com anéis de noivado — Dassa Danna" loading="lazy" decoding="async">
+          <img src="dassadanna/dassadanna-3.webp" srcset="dassadanna/dassadanna-3-sm.webp 640w, dassadanna/dassadanna-3.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Macarons com anéis de noivado — Dassa Danna" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="dassadanna/dassadanna-4.webp" alt="Macarons coloridos com joias de pedras preciosas — Dassa Danna" loading="lazy" decoding="async">
+          <img src="dassadanna/dassadanna-4.webp" srcset="dassadanna/dassadanna-4-sm.webp 640w, dassadanna/dassadanna-4.webp 1200w" sizes="(min-width: 900px) 340px, 45vw" alt="Macarons coloridos com joias de pedras preciosas — Dassa Danna" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1678,19 +1718,19 @@
       </div>
       <div class="event-thumbs" id="carolbassiThumbs">
         <div class="event-thumb" data-index="0">
-          <img src="carolbassi/carolbassi-1.webp" alt="Convidadas na boutique — Evento Carol Bassi" loading="lazy" decoding="async" style="object-position:center 28%">
+          <img src="carolbassi/carolbassi-1.webp" srcset="carolbassi/carolbassi-1-sm.webp 640w, carolbassi/carolbassi-1.webp 1067w" sizes="(min-width: 900px) 340px, 45vw" alt="Convidadas na boutique — Evento Carol Bassi" loading="lazy" decoding="async" style="object-position:center 28%">
         </div>
         <div class="event-thumb" data-index="1">
-          <img src="carolbassi/carolbassi-2.webp" alt="Detalhes da mesa de doces — Evento Carol Bassi" loading="lazy" decoding="async">
+          <img src="carolbassi/carolbassi-2.webp" srcset="carolbassi/carolbassi-2-sm.webp 640w, carolbassi/carolbassi-2.webp 1067w" sizes="(min-width: 900px) 340px, 45vw" alt="Detalhes da mesa de doces — Evento Carol Bassi" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="2">
-          <img src="carolbassi/carolbassi-4.webp" alt="Torta de framboesa assinatura — Evento Carol Bassi" loading="lazy" decoding="async">
+          <img src="carolbassi/carolbassi-4.webp" srcset="carolbassi/carolbassi-4-sm.webp 640w, carolbassi/carolbassi-4.webp 1416w" sizes="(min-width: 900px) 340px, 45vw" alt="Torta de framboesa assinatura — Evento Carol Bassi" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="3">
-          <img src="carolbassi/carolbassi-6.webp" alt="Convidadas — Evento Carol Bassi" width="1067" height="1600" loading="lazy" decoding="async">
+          <img src="carolbassi/carolbassi-6.webp" srcset="carolbassi/carolbassi-6-sm.webp 640w, carolbassi/carolbassi-6.webp 1067w" sizes="(min-width: 900px) 340px, 45vw" alt="Convidadas — Evento Carol Bassi" width="1067" height="1600" loading="lazy" decoding="async">
         </div>
         <div class="event-thumb" data-index="4">
-          <img src="carolbassi/carolbassi-7.webp" alt="Drinks personalizados — 10 anos Carol Bassi" width="1067" height="1600" loading="lazy" decoding="async">
+          <img src="carolbassi/carolbassi-7.webp" srcset="carolbassi/carolbassi-7-sm.webp 640w, carolbassi/carolbassi-7.webp 1067w" sizes="(min-width: 900px) 340px, 45vw" alt="Drinks personalizados — 10 anos Carol Bassi" width="1067" height="1600" loading="lazy" decoding="async">
         </div>
       </div>
     </div>
@@ -1725,10 +1765,12 @@
     </div>
 
     <!-- Tabs -->
-    <div class="menu-tabs" role="tablist">
-      <button class="menu-tab on" data-tab="doces" role="tab" aria-selected="true">Doces</button>
-      <button class="menu-tab" data-tab="bolos" role="tab" aria-selected="false">Bolos & Sobremesas</button>
-      <button class="menu-tab" data-tab="salgados" role="tab" aria-selected="false">Salgados</button>
+    <div class="menu-tabs-wrap">
+      <div class="menu-tabs" role="tablist">
+        <button class="menu-tab on" data-tab="doces" role="tab" aria-selected="true">Doces</button>
+        <button class="menu-tab" data-tab="bolos" role="tab" aria-selected="false">Bolos & Sobremesas</button>
+        <button class="menu-tab" data-tab="salgados" role="tab" aria-selected="false">Salgados</button>
+      </div>
     </div>
 
     <!-- DOCES -->
@@ -1859,7 +1901,7 @@
   <div class="wrap">
     <div style="text-align:center">
       <span class="overline reveal">Histórias reais</span>
-      <h2 class="reveal d1" style="font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.5rem);font-weight:300;line-height:1.15;color:var(--ivory);margin-top:.75rem">
+      <h2 class="reveal d1 sec-title-lg">
         O que os convidados lembraram<br>anos depois
       </h2>
     </div>
@@ -2006,7 +2048,7 @@
   <div class="wrap">
     <div style="text-align:center">
       <span class="overline reveal">FAQ</span>
-      <h2 class="reveal d1" style="font-family:var(--serif);font-size:clamp(1.9rem,4.5vw,3.5rem);font-weight:300;line-height:1.15;color:var(--ivory);margin-top:.75rem">
+      <h2 class="reveal d1 sec-title-lg">
         Perguntas frequentes
       </h2>
     </div>
@@ -2049,6 +2091,16 @@
         </button></dt>
         <dd class="faq-ans" role="region"><div class="faq-ans-in">
           <p class="faq-ans-text">Cada projeto é orçado individualmente, pois depende da complexidade, número de convidados e localização. Os valores são apresentados durante a consultoria inicial, sem compromisso. Trabalho com número limitado de projetos por mês para garantir atenção total a cada cliente.</p>
+        </div></dd>
+      </div>
+
+      <div class="faq-item">
+        <dt><button class="faq-q" aria-expanded="false" onclick="faq(this)">
+          <span class="faq-qt">Como funciona a reserva e a retirada?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button></dt>
+        <dd class="faq-ans" role="region"><div class="faq-ans-in">
+          <p class="faq-ans-text">A reserva é confirmada com um sinal de 50% via transferência ou Pix, e o restante até 10 dias antes do evento. Doces finos têm produção limitada, com mínimo de 20 unidades por sabor. A retirada é feita no ateliê, na Barra da Tijuca, em horário reservado — entrega privada disponível sob consulta.</p>
         </div></dd>
       </div>
 
@@ -2158,6 +2210,11 @@
   // Tap / click anywhere on the panel
   panel.addEventListener('click', dismiss, { once: true });
 
+  // Keyboard: Enter, Space or Escape (for keyboard-only visitors with no mouse/touch)
+  window.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') dismiss();
+  }, { once: true });
+
   // Desktop: mouse wheel down
   window.addEventListener('wheel', function (e) {
     if (e.deltaY > 0) dismiss();
@@ -2174,6 +2231,28 @@
       dismiss();
     }
   }, { passive: true });
+})();
+
+/* =====================================================
+   HERO VIDEO — only fetched when the connection and the
+   visitor's motion preference can actually afford it.
+   The poster image stands alone otherwise.
+===================================================== */
+(function () {
+  const v = document.getElementById('heroVideo');
+  if (!v) return;
+
+  const reduceMotion = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  const slowConn = !!(conn && (conn.saveData || /(^|-)(2g)$/.test(conn.effectiveType || '')));
+
+  if (reduceMotion || slowConn) return; // poster.jpg alone is the hero on these connections
+
+  v.querySelectorAll('source[data-src]').forEach(function (s) { s.src = s.dataset.src; });
+  v.preload = 'auto';
+  v.load();
+  v.autoplay = true;
+  v.play().catch(function () {}); // autoplay can be blocked by the browser; poster remains visible
 })();
 
 /* =====================================================
@@ -2205,13 +2284,17 @@ function closeNav() {
 /* =====================================================
    SCROLL REVEAL
 ===================================================== */
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); }
-  });
-}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+if ('IntersectionObserver' in window) {
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('vis'); ro.unobserve(e.target); }
+    });
+  }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('vis'));
+}
 
 /* =====================================================
    FOUNDER SCROLL-DRIVEN CHAPTERS
@@ -2282,6 +2365,20 @@ document.querySelectorAll('.menu-tab').forEach(function(tab) {
     document.getElementById('tab-' + key).classList.add('on');
   });
 });
+
+// Fade hint on the tab bar's trailing edge whenever a tab is scrolled out of view
+(function () {
+  const scroller = document.querySelector('.menu-tabs');
+  const wrap = document.querySelector('.menu-tabs-wrap');
+  if (!scroller || !wrap) return;
+  function updateFade() {
+    const hasMore = scroller.scrollWidth - scroller.clientWidth - scroller.scrollLeft > 4;
+    wrap.classList.toggle('has-more', hasMore);
+  }
+  scroller.addEventListener('scroll', updateFade, { passive: true });
+  window.addEventListener('resize', updateFade, { passive: true });
+  updateFade();
+})();
 
 /* =====================================================
    FOOTER YEAR
