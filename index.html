@@ -980,39 +980,6 @@
       line-height: 1.7; margin-top: 1.1rem;
     }
 
-    /* Como encomendar — discreet accordion */
-    .menu-como {
-      margin-top: clamp(2.5rem,5vh,3.5rem);
-      background: var(--bg-2);
-      border: 1px solid var(--line-sub);
-      border-radius: 3px;
-    }
-    .menu-como summary {
-      list-style: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; padding: 1.4rem 1.75rem;
-    }
-    .menu-como summary::-webkit-details-marker { display: none; }
-    .menu-como-title {
-      font-size: .6rem; font-weight: 500; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--gold);
-    }
-    .menu-como[open] .faq-icon::after {
-      transform: translate(-50%,-50%) rotate(90deg); opacity: 0;
-    }
-    .menu-como ul {
-      list-style: none; display: flex; flex-direction: column;
-      gap: .6rem; padding: 0 1.75rem 1.6rem;
-    }
-    .menu-como li {
-      font-size: .8rem; color: var(--text-2); line-height: 1.6;
-      padding-left: 1rem; position: relative;
-    }
-    .menu-como li::before {
-      content: '—'; position: absolute; left: 0;
-      color: var(--gold-dk); font-size: .7rem;
-    }
-
     /* =====================================================
        TESTIMONIALS
     ===================================================== */
@@ -1882,21 +1849,6 @@
       </div>
     </div>
 
-    <!-- Como encomendar -->
-    <details class="menu-como">
-      <summary>
-        <span class="menu-como-title">Como encomendar</span>
-        <span class="faq-icon" aria-hidden="true"></span>
-      </summary>
-      <ul>
-        <li>Todas as criações são produzidas sob encomenda no ateliê, com insumos rigorosamente selecionados.</li>
-        <li>Doces finos em produção limitada — mínimo de 20 unidades por sabor.</li>
-        <li>Encomendas com 3 dias úteis de antecedência, conforme a agenda do ateliê.</li>
-        <li>A reserva é confirmada mediante pagamento antecipado, por transferência bancária ou Pix.</li>
-        <li>Eventos de maior porte: 50% no ato da reserva e o restante até 10 dias antes da data.</li>
-        <li>Retirada no ateliê, na Barra da Tijuca, em horário reservado. Entrega privada disponível sob consulta.</li>
-      </ul>
-    </details>
   </div>
 </section>
 
