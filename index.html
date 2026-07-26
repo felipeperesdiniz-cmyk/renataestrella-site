@@ -217,7 +217,7 @@
       justify-content: center;
     }
     .intro-logo canvas {
-      width: clamp(320px, 68vw, 720px);
+      width: clamp(280px, 84vw, 720px);
       height: auto;
       opacity: 0;
       transform: translateY(28px);
@@ -239,8 +239,9 @@
     @keyframes rule-grow { to { height: 52px; } }
     /* Subtitle */
     .intro-sub {
-      font-size: clamp(.52rem, 1.1vw, .65rem);
+      font-size: clamp(.72rem, 3vw, .85rem);
       letter-spacing: .28em;
+      margin-right: -.28em;
       text-transform: uppercase;
       color: var(--gold);
       opacity: 0;
@@ -265,7 +266,8 @@
       50%       { opacity: 1;   transform: scaleY(1.15); }
     }
     .intro-hint-label {
-      font-size: .5rem; letter-spacing: .24em;
+      font-size: clamp(.62rem, 2.2vw, .68rem); letter-spacing: .24em;
+      margin-right: -.24em;
       text-transform: uppercase; color: var(--text-3);
     }
     /* Reduced motion */
@@ -1518,10 +1520,10 @@
           width="1400" height="935" loading="lazy"
           style="object-position: center center">
         <img class="f-img" id="fi3"
-          src="hoje.webp"
-          alt="Hoje — Renata com sua criação"
-          width="1400" height="2097" loading="lazy"
-          style="object-position: center 55%; filter: brightness(1.35)">
+          src="capitulo-iv.webp"
+          alt="Hoje — Renata com suas criações em Paris, com a Torre Eiffel ao fundo"
+          width="1280" height="1280" loading="lazy"
+          style="object-position: center 30%; filter: brightness(1.1)">
         <div class="founder-overlay"></div>
       </div>
 
