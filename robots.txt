@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.renatapatisserie.com.br/sitemap.xml
+Sitemap: https://renataestrellapatisserie.com/sitemap.xml
