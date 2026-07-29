@@ -283,9 +283,7 @@
     }
     /* Scroll / tap hint */
     .intro-hint {
-      position: absolute;
-      bottom: clamp(1.75rem, 4vh, 3rem);
-      left: 50%; transform: translateX(-50%);
+      margin-top: .6rem;
       display: flex; flex-direction: column; align-items: center; gap: .45rem;
       opacity: 0;
       animation: il-rise .7s 1.4s var(--ease-out) forwards;
@@ -1359,10 +1357,10 @@
     </div>
     <div class="intro-rule"></div>
     <p class="intro-sub">Pâtisserie de Luxo &nbsp;·&nbsp; Rio de Janeiro</p>
-  </div>
-  <div class="intro-hint">
-    <div class="intro-hint-line"></div>
-    <span class="intro-hint-label">Deslize</span>
+    <div class="intro-hint">
+      <div class="intro-hint-line"></div>
+      <span class="intro-hint-label">Deslize</span>
+    </div>
   </div>
 </div>
 
@@ -1393,7 +1391,7 @@
 
 <!-- Mobile Nav Overlay -->
 <div class="nav__mob" id="navMob" role="dialog" aria-modal="true" aria-label="Navegação">
-  <a href="#founder"      onclick="closeNav()">Sobre</a>
+  <a href="#fDriver"      onclick="closeNav()">Sobre</a>
   <a href="#portfolio"    onclick="closeNav()">Criações</a>
   <a href="#cardapio"     onclick="closeNav()">Ateliê</a>
   <a href="#testimonials" onclick="closeNav()">Histórias</a>
@@ -1408,7 +1406,7 @@
     <div class="nav__inner">
       <a href="#" class="nav__logo" aria-label="Renata Pâtisserie">Renata<b>.</b></a>
       <div class="nav__links" role="menubar">
-        <a href="#founder"      role="menuitem">Sobre</a>
+        <a href="#fDriver"      role="menuitem">Sobre</a>
         <a href="#portfolio"    role="menuitem">Criações</a>
         <a href="#cardapio"     role="menuitem">Ateliê</a>
         <a href="#testimonials" role="menuitem">Histórias</a>
@@ -2174,7 +2172,7 @@
         <p class="foot-creds">Ferrandi · Ritz Escoffier · Le Cordon Bleu</p>
       </div>
       <nav class="foot-links" aria-label="Links do rodapé">
-        <a href="#founder">Sobre</a>
+        <a href="#fDriver">Sobre</a>
         <a href="#portfolio">Criações</a>
         <a href="#cardapio">Ateliê</a>
         <a href="#testimonials">Histórias</a>
