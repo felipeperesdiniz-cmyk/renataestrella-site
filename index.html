@@ -123,6 +123,33 @@
         ]
       },
       {
+        "@type": "Recipe",
+        "name": "Vichyssoise",
+        "author": {"@id": "https://renataestrellapatisserie.com/#founder"},
+        "description": "A vichyssoise é uma sopa tradicional da culinária francesa, feita à base de alho-poró, cebola, batata e creme de leite, que pode ser servida fria ou quente.",
+        "image": "https://renataestrellapatisserie.com/assets/ebook/ebook-02-vichyssoise.webp",
+        "recipeCuisine": "Francesa",
+        "recipeCategory": "Sopa",
+        "inLanguage": "pt-BR",
+        "recipeYield": "4 porções",
+        "recipeIngredient": [
+          "4 batatas inglesas",
+          "½ cebola cortada em rodelas",
+          "2 talos de alho-poró cortados em rodelas",
+          "1 colher de sopa de manteiga gelada (25g)",
+          "1 xícara de creme de leite fresco (200ml)",
+          "Água quente (2l)",
+          "1 pitada de sal"
+        ],
+        "recipeInstructions": [
+          {"@type": "HowToStep", "text": "Descasque as batatas e corte-as em cubos ou rodelas. Reserve em um bowl com água."},
+          {"@type": "HowToStep", "text": "Em uma panela com um pouco de azeite, refogue a cebola e o alho-poró. Acrescente as batatas, misture bem e deixe suar um pouco."},
+          {"@type": "HowToStep", "text": "Acrescente a água fervendo até cobrir as batatas. Tampe a panela e deixe cozinhar bem, até a batata ficar cozida."},
+          {"@type": "HowToStep", "text": "Em um liquidificador, bata bem o caldo. Adicione a manteiga gelada e bata novamente. Em seguida, acrescente o creme de leite fresco e bata até obter uma mistura homogênea."},
+          {"@type": "HowToStep", "text": "Experimente e ajuste o sal ao seu paladar. Sirva quente ou gelada."}
+        ]
+      },
+      {
         "@type": "Review",
         "itemReviewed": {"@id": "https://renataestrellapatisserie.com/#business"},
         "author": {"@type": "Person", "name": "Adriana Medeiros"},
@@ -1264,6 +1291,110 @@
     .contact-email a:hover { border-color: var(--gold); }
 
     /* =====================================================
+       EBOOK — SOPAS E CREMES
+    ===================================================== */
+    #ebook { padding: clamp(4rem,10vh,8rem) 0; background: var(--bg-2); }
+    .ebook-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+      margin-bottom: clamp(3rem,7vh,5rem);
+    }
+    .ebook-intro { max-width: 34rem; }
+    .ebook-sub {
+      font-size: .9rem; color: var(--text-2); line-height: 1.9;
+      margin: 1.25rem 0 2rem; max-width: 42ch;
+    }
+    .ebook-gallery {
+      display: flex; gap: .9rem; overflow-x: auto;
+      padding-bottom: .75rem; margin: 0 -1.25rem; padding-inline: 1.25rem;
+      scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin; scrollbar-color: var(--line) transparent;
+    }
+    .ebook-card {
+      flex: 0 0 auto; width: clamp(9.5rem,24vw,13rem);
+      aspect-ratio: 9/14; border-radius: 4px; overflow: hidden;
+      scroll-snap-align: start;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0,0,0,.25);
+    }
+    .ebook-card img { width: 100%; height: 100%; object-fit: cover; }
+    .ebook-card-cover { border-color: var(--gold-dk); }
+
+    .ebook-recipe {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      background: var(--bg-3);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .ebook-recipe-media { aspect-ratio: 9/10; overflow: hidden; }
+    .ebook-recipe-media img { width: 100%; height: 100%; object-fit: cover; }
+    .ebook-recipe-content { padding: 2rem clamp(1.25rem,4vw,3rem) 2.5rem; }
+    .ebook-recipe-title {
+      font-family: var(--serif); font-size: clamp(1.7rem,3.5vw,2.4rem);
+      font-weight: 300; color: var(--ivory); margin: .6rem 0 1rem;
+    }
+    .ebook-recipe-desc {
+      font-size: .88rem; color: var(--text-2); line-height: 1.85; margin-bottom: 2rem;
+    }
+    .ebook-recipe-cols {
+      display: grid; grid-template-columns: 1fr; gap: 2rem;
+    }
+    .ebook-recipe-col h4 {
+      font-family: var(--sans); font-size: .68rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .ebook-recipe-list { display: flex; flex-direction: column; gap: .65rem; }
+    .ebook-recipe-list li {
+      font-size: .85rem; color: var(--text); line-height: 1.6;
+      padding-left: 1.1rem; position: relative;
+    }
+    .ebook-recipe-list li::before {
+      content: ''; position: absolute; left: 0; top: .6em;
+      width: 5px; height: 1px; background: var(--gold-dk);
+    }
+    .ebook-recipe-cols ol.ebook-recipe-list { counter-reset: step; }
+    .ebook-recipe-cols ol.ebook-recipe-list li { counter-increment: step; padding-left: 1.5rem; }
+    .ebook-recipe-cols ol.ebook-recipe-list li::before {
+      content: counter(step) '.'; width: auto; height: auto; background: none;
+      top: 0; font-size: .78rem; color: var(--gold-dk); font-family: var(--sans);
+    }
+    .ebook-recipe-note {
+      font-size: .78rem; color: var(--text-3); line-height: 1.8;
+      margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line-sub);
+    }
+    .ebook-order {
+      margin-top: 2rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+      align-items: flex-start;
+      background: linear-gradient(135deg, rgba(201,169,110,0.09), rgba(201,169,110,0.02));
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: clamp(1.75rem,4vw,2.75rem);
+    }
+    .ebook-order-title {
+      font-family: var(--serif); font-size: clamp(1.3rem,2.6vw,1.7rem);
+      font-weight: 400; color: var(--ivory); margin: .6rem 0 .75rem; line-height: 1.3;
+    }
+    .ebook-order-desc {
+      font-size: .85rem; color: var(--text-2); line-height: 1.8; max-width: 46ch;
+    }
+    .ebook-order-cta { flex-shrink: 0; }
+    @media (min-width: 860px) {
+      .ebook-top { grid-template-columns: minmax(0,26rem) 1fr; gap: 3rem; }
+      .ebook-recipe { grid-template-columns: 40% 1fr; }
+      .ebook-recipe-media { aspect-ratio: auto; }
+      .ebook-recipe-cols { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+      .ebook-order { flex-direction: row; align-items: center; justify-content: space-between; gap: 2rem; }
+      .ebook-order-text { flex: 1; }
+    }
+
+    /* =====================================================
        FOOTER
     ===================================================== */
     footer {
@@ -1427,6 +1558,7 @@
   <a href="#sobreDriver"      onclick="closeNav()">Sobre</a>
   <a href="#criacoes"    onclick="closeNav()">Criações</a>
   <a href="#cardapio"     onclick="closeNav()">Ateliê</a>
+  <a href="#ebook"     onclick="closeNav()">eBook</a>
   <a href="#historias" onclick="closeNav()">Histórias</a>
   <a href="#servicos"     onclick="closeNav()">Serviços</a>
   <a href="#faq"          onclick="closeNav()">FAQ</a>
@@ -1442,6 +1574,7 @@
         <a href="#sobreDriver"      role="menuitem">Sobre</a>
         <a href="#criacoes"    role="menuitem">Criações</a>
         <a href="#cardapio"     role="menuitem">Ateliê</a>
+        <a href="#ebook"     role="menuitem">eBook</a>
         <a href="#historias" role="menuitem">Histórias</a>
         <a href="#servicos"     role="menuitem">Serviços</a>
         <a href="#faq"          role="menuitem">FAQ</a>
@@ -2005,6 +2138,126 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ====================================================
+     EBOOK — SOPAS E CREMES (lead magnet)
+==================================================== -->
+<section id="ebook" aria-label="eBook Sopas e Cremes, por Renata Estrella">
+  <div class="wrap">
+    <div class="ebook-top">
+      <div class="ebook-intro">
+        <span class="overline reveal">Presente da chef</span>
+        <h2 class="reveal d1 sec-title-lg">Sopas &amp; Cremes<br><em>para os dias frios</em></h2>
+        <p class="ebook-sub reveal d2">
+          Um eBook autoral com 8 receitas de sopas e cremes — e uma sobremesa bônus — inspiradas na técnica francesa que Renata aprimorou na Ferrandi Paris e na Le Cordon Bleu. Receitas simples, pensadas para aquecer a mesa da sua família neste inverno.
+        </p>
+        <a
+          href="https://wa.me/5521999821270?text=Ol%C3%A1%2C%20Renata!%20Gostaria%20de%20receber%20o%20eBook%20Sopas%20e%20Cremes."
+          class="btn-wa reveal d3"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Receber o eBook Sopas e Cremes pelo WhatsApp"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.057 23.486a.5.5 0 0 0 .602.602l5.579-1.464A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.887 9.887 0 0 1-5.031-1.375l-.36-.214-3.733.979.997-3.648-.235-.374A9.865 9.865 0 0 1 2.106 12C2.106 6.533 6.533 2.106 12 2.106c5.467 0 9.894 4.427 9.894 9.894 0 5.467-4.427 9.894-9.894 9.894z"/></svg>
+          Receber o eBook grátis
+        </a>
+        <p class="wa-note reveal d3">Envio digital gratuito, direto no seu WhatsApp. Prefere não cozinhar? Renata também prepara essas receitas sob encomenda.</p>
+      </div>
+
+      <ul class="ebook-gallery reveal d2">
+        <li class="ebook-card ebook-card-cover">
+          <img src="assets/ebook/ebook-cover.webp" alt="Capa do eBook Sopas e Cremes, por Renata Estrella" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-01-creme-batata-baroa.webp" alt="Receita 01 — Creme de Batata Baroa com gorgonzola" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-02-vichyssoise.webp" alt="Receita 02 — Vichyssoise" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-03-sopa-tomate.webp" alt="Receita 03 — Sopa de Tomate com Iogurte Grego" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-04-sopa-aspargos.webp" alt="Receita 04 — Sopa de Aspargos" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-05-sopa-cebola.webp" alt="Receita 05 — Sopa de Cebola" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-06-caldo-verde.webp" alt="Receita 06 — Caldo Verde" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-07-sopa-beterraba.webp" alt="Receita 07 — Sopa de Beterraba" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-08-caldo-legumes.webp" alt="Receita 08 — Caldo de Legumes" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+        <li class="ebook-card">
+          <img src="assets/ebook/ebook-09-chocolate-quente.webp" alt="Receita bônus — Chocolate Quente" width="900" height="1400" loading="lazy" decoding="async">
+        </li>
+      </ul>
+    </div>
+
+    <!-- Full sample recipe — indexable content -->
+    <div class="ebook-recipe reveal">
+      <div class="ebook-recipe-media">
+        <img src="assets/ebook/ebook-02-vichyssoise.webp" alt="Vichyssoise — sopa cremosa de batata e alho-poró" width="900" height="1400" loading="lazy" decoding="async">
+      </div>
+      <div class="ebook-recipe-content">
+        <span class="overline">Amostra do eBook</span>
+        <h3 class="ebook-recipe-title">Vichyssoise</h3>
+        <p class="ebook-recipe-desc">
+          A vichyssoise é uma sopa tradicional da culinária francesa, feita à base de alho-poró, cebola, batata e creme de leite. Depois de cozidos, os ingredientes são reduzidos a um creme, que pode ser servido frio ou quente.
+        </p>
+        <div class="ebook-recipe-cols">
+          <div class="ebook-recipe-col">
+            <h4>Ingredientes</h4>
+            <ul class="ebook-recipe-list">
+              <li>4 batatas inglesas</li>
+              <li>½ cebola cortada em rodelas</li>
+              <li>2 talos de alho-poró cortados em rodelas</li>
+              <li>1 colher de sopa de manteiga gelada (25g)</li>
+              <li>1 xícara de creme de leite fresco (200ml)</li>
+              <li>Água quente (2l)</li>
+              <li>1 pitada de sal</li>
+            </ul>
+          </div>
+          <div class="ebook-recipe-col">
+            <h4>Modo de preparo</h4>
+            <ol class="ebook-recipe-list">
+              <li>Descasque as batatas e corte-as em cubos ou rodelas. Reserve em um bowl com água.</li>
+              <li>Em uma panela com um pouco de azeite, refogue a cebola e o alho-poró. Acrescente as batatas, misture bem e deixe suar um pouco.</li>
+              <li>Acrescente a água fervendo até cobrir as batatas. Tampe a panela e deixe cozinhar bem, até a batata ficar cozida.</li>
+              <li>Em um liquidificador, bata bem o caldo. Adicione a manteiga gelada e bata novamente. Em seguida, acrescente o creme de leite fresco e bata até obter uma mistura homogênea.</li>
+              <li>Experimente e ajuste o sal ao seu paladar. Sirva quente ou gelada.</li>
+            </ol>
+          </div>
+        </div>
+        <p class="ebook-recipe-note">As outras 7 receitas — incluindo Sopa de Cebola, Caldo Verde e uma sobremesa bônus de Chocolate Quente — estão no eBook completo, gratuito no WhatsApp.</p>
+      </div>
+    </div>
+
+    <div class="ebook-order reveal">
+      <div class="ebook-order-text">
+        <span class="overline">Sem tempo para cozinhar?</span>
+        <h3 class="ebook-order-title">Renata também prepara estas sopas e cremes para você</h3>
+        <p class="ebook-order-desc">
+          Todas as receitas do eBook saem da cozinha da Renata sob encomenda — em porções individuais ou para servir a mesa toda, prontas para aquecer o seu inverno sem trabalho nenhum.
+        </p>
+      </div>
+      <a
+        href="https://wa.me/5521999821270?text=Ol%C3%A1%2C%20Renata!%20Vi%20o%20eBook%20Sopas%20e%20Cremes%20e%20gostaria%20de%20encomendar%20algumas%20receitas%20prontas."
+        class="btn-wa ebook-order-cta"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Encomendar sopas e cremes prontos pelo WhatsApp"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.862L.057 23.486a.5.5 0 0 0 .602.602l5.579-1.464A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.894a9.887 9.887 0 0 1-5.031-1.375l-.36-.214-3.733.979.997-3.648-.235-.374A9.865 9.865 0 0 1 2.106 12C2.106 6.533 6.533 2.106 12 2.106c5.467 0 9.894 4.427 9.894 9.894 0 5.467-4.427 9.894-9.894 9.894z"/></svg>
+        Encomendar sopas e cremes
+      </a>
+    </div>
   </div>
 </section>
 
