@@ -226,7 +226,7 @@
       background: var(--bg);
       color: var(--text);
       font-family: var(--sans);
-      font-weight: 300;
+      font-weight: 400;
       font-size: 1rem;
       line-height: 1.7;
       overflow-x: hidden;
@@ -257,9 +257,9 @@
     }
     .overline {
       font-family: var(--sans);
-      font-size: 0.62rem;
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--gold);
     }
@@ -358,9 +358,9 @@
       50%       { opacity: 1;   transform: scaleY(1.15); }
     }
     .intro-hint-label {
-      font-size: clamp(.62rem, 2.2vw, .68rem); letter-spacing: .24em;
-      margin-right: -.24em;
-      text-transform: uppercase; color: var(--text-3);
+      font-size: clamp(.68rem, 2.2vw, .75rem); letter-spacing: .2em;
+      margin-right: -.2em;
+      text-transform: uppercase; color: var(--text-2);
     }
     /* Reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -385,29 +385,53 @@
     }
     .nav__inner {
       display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
     }
     .nav__logo {
       font-family: var(--serif); font-size: clamp(1.05rem, 2.2vw, 1.3rem);
-      font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--ivory);
+      font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ivory); white-space: nowrap;
     }
     .nav__logo b { color: var(--gold); font-weight: 400; }
     .nav__links {
-      display: none; gap: 2.5rem; align-items: center;
+      display: none; gap: 2.25rem; align-items: center;
     }
     .nav__links a {
-      font-size: 0.74rem; font-weight: 500; letter-spacing: 0.16em;
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em;
       text-transform: uppercase; color: var(--ivory-2);
       transition: color .3s;
     }
     .nav__links a:hover { color: var(--gold); }
-    .nav__cta {
-      font-size: 0.68rem; font-weight: 500; letter-spacing: 0.18em;
-      text-transform: uppercase; color: var(--bg);
-      background: var(--gold); padding: .6rem 1.5rem;
-      border-radius: 2px; transition: background .3s;
+    .nav__end {
+      display: flex; align-items: center; gap: .85rem;
+      flex-shrink: 0;
     }
-    .nav__cta:hover { background: var(--gold-lt); }
+    /* High-contrast CTA — ivory stays visible over hero pastry video/photos */
+    .nav__cta {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--bg);
+      background: var(--ivory);
+      padding: .7rem 1.25rem;
+      border-radius: 2px;
+      border: 1px solid var(--ivory);
+      line-height: 1.2;
+      transition: background .3s, border-color .3s, color .3s, transform .2s;
+      white-space: nowrap;
+    }
+    .nav__cta:hover {
+      background: var(--gold-lt);
+      border-color: var(--gold-lt);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+    .nav__cta-short { display: none; }
+    @media (max-width: 420px) {
+      .nav__cta-full { display: none; }
+      .nav__cta-short { display: inline; }
+      .nav__cta { padding: .65rem 0.95rem; font-size: 0.68rem; letter-spacing: 0.1em; }
+    }
     .nav__burger {
       display: flex; flex-direction: column; justify-content: center; align-items: flex-end;
       gap: 5px; width: 44px; height: 44px; padding: 0; margin-right: -11px;
@@ -439,10 +463,11 @@
     }
     .nav__mob a:hover { color: var(--gold); }
     .nav__mob .mob-cta {
-      font-family: var(--sans); font-size: .65rem; font-weight: 500;
-      letter-spacing: .2em; text-transform: uppercase;
-      color: var(--bg); background: var(--gold);
-      padding: .9rem 2.5rem; border-radius: 2px; margin-top: .5rem;
+      font-family: var(--sans); font-size: .75rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--bg); background: var(--ivory);
+      padding: .95rem 2.5rem; border-radius: 2px; margin-top: .5rem;
+      border: 1px solid var(--ivory);
     }
 
     /* =====================================================
@@ -501,8 +526,8 @@
     }
     .hero-h1 em { font-style: italic; color: var(--gold); }
     .hero-sub {
-      font-size: clamp(.8rem, 1.4vw, .95rem); font-weight: 300;
-      color: var(--ivory-2); max-width: 38ch; line-height: 1.8;
+      font-size: clamp(.85rem, 1.4vw, 1rem); font-weight: 400;
+      color: var(--ivory-2); max-width: 42ch; line-height: 1.8;
       margin-bottom: 2.5rem;
       opacity: 0; transform: translateY(18px);
       animation: fadeup .9s .6s var(--ease-out) forwards;
@@ -517,17 +542,18 @@
     }
     .btn-gold {
       display: inline-flex; align-items: center; gap: .7rem;
-      font-size: .68rem; font-weight: 500; letter-spacing: .18em;
+      font-size: .75rem; font-weight: 600; letter-spacing: .14em;
       text-transform: uppercase; color: var(--bg);
-      background: var(--gold); padding: 1rem 2rem; border-radius: 2px;
-      transition: background .3s, transform .2s;
+      background: var(--ivory); padding: 1rem 2rem; border-radius: 2px;
+      border: 1px solid var(--ivory);
+      transition: background .3s, border-color .3s, transform .2s;
     }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .btn-gold:hover { background: var(--gold-lt); border-color: var(--gold-lt); transform: translateY(-1px); }
     .btn-outline {
       display: inline-flex; align-items: center; gap: .7rem;
-      font-size: .68rem; font-weight: 500; letter-spacing: .18em;
+      font-size: .75rem; font-weight: 500; letter-spacing: .14em;
       text-transform: uppercase; color: var(--ivory);
-      padding: 1rem 2rem; border: 1px solid var(--line); border-radius: 2px;
+      padding: 1rem 2rem; border: 1px solid rgba(245,239,224,.45); border-radius: 2px;
       transition: border-color .3s, color .3s, transform .2s;
     }
     .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-1px); }
@@ -547,8 +573,8 @@
       50% { opacity: 1; transform: scaleY(1.15); }
     }
     .hero-scroll-label {
-      font-size: .55rem; font-weight: 500; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--text-3);
+      font-size: .7rem; font-weight: 500; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--text-2);
       writing-mode: vertical-rl;
     }
 
@@ -584,8 +610,8 @@
       color: var(--ivory); white-space: nowrap;
     }
     .cred-sub {
-      font-size: .58rem; font-weight: 500; letter-spacing: .2em;
-      text-transform: uppercase; color: var(--gold-dk);
+      font-size: .7rem; font-weight: 500; letter-spacing: .16em;
+      text-transform: uppercase; color: var(--gold);
       margin-top: .3rem;
     }
 
@@ -633,12 +659,20 @@
       margin-top: .75rem; margin-bottom: 1rem;
     }
     .founder-intro p {
-      font-size: .9rem; color: var(--text-2);
+      font-size: .95rem; color: var(--text-2);
       max-width: 42ch; margin: 0 auto;
     }
+    .founder-skip {
+      display: inline-flex; align-items: center; gap: .5rem;
+      margin-top: 1.5rem;
+      font-size: .75rem; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--gold);
+      transition: color .3s, gap .3s;
+    }
+    .founder-skip:hover { color: var(--gold-lt); gap: .75rem; }
 
     .founder-driver {
-      height: 400vh; position: relative;
+      height: 200vh; position: relative;
     }
     .founder-sticky {
       position: sticky; top: 0; height: 100vh;
@@ -691,8 +725,8 @@
       transition: opacity .5s var(--ease-std) .32s, transform .5s var(--ease-std) .32s, visibility 0s .32s;
     }
     .f-num {
-      font-size: .58rem; font-weight: 500; letter-spacing: .26em;
-      text-transform: uppercase; color: var(--gold-dk);
+      font-size: .7rem; font-weight: 500; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold);
       margin-bottom: .7rem;
     }
     .f-title {
@@ -703,8 +737,8 @@
       max-width: 14ch;
     }
     .f-text {
-      font-size: clamp(.82rem, 1.4vw, .98rem);
-      font-weight: 300; line-height: 1.9;
+      font-size: clamp(.88rem, 1.4vw, 1rem);
+      font-weight: 400; line-height: 1.9;
       color: var(--ivory-2); max-width: 42ch;
     }
 
@@ -718,7 +752,7 @@
     }
     .f-dot {
       width: 4px; height: 4px; border-radius: 2px;
-      background: var(--text-3);
+      background: var(--text-2);
       transition: background .3s, height .35s var(--ease-out);
     }
     .f-dot.on { background: var(--gold); height: 22px; }
@@ -761,19 +795,21 @@
     .port-item-c { aspect-ratio: 16/9; }
     .port-over {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(10,9,5,.92) 0%, transparent 55%);
-      opacity: 0; transition: opacity .4s;
+      background: linear-gradient(to top, rgba(10,9,5,.92) 0%, rgba(10,9,5,.35) 45%, transparent 70%);
+      opacity: 1; transition: opacity .4s;
     }
-    .port-item:hover .port-over { opacity: 1; }
+    .port-item:hover .port-over {
+      background: linear-gradient(to top, rgba(10,9,5,.95) 0%, rgba(10,9,5,.4) 50%, transparent 72%);
+    }
     .port-info {
       position: absolute; bottom: 0; left: 0; right: 0;
       padding: 1.5rem;
-      transform: translateY(6px); opacity: 0;
-      transition: transform .4s var(--ease-out), opacity .4s;
+      transform: none; opacity: 1;
+      transition: transform .4s var(--ease-out);
     }
-    .port-item:hover .port-info { transform: translateY(0); opacity: 1; }
+    .port-item:hover .port-info { transform: translateY(-2px); }
     .port-type {
-      font-size: .58rem; font-weight: 500; letter-spacing: .2em;
+      font-size: .7rem; font-weight: 500; letter-spacing: .16em;
       text-transform: uppercase; color: var(--gold); margin-bottom: .2rem;
     }
     .port-name {
@@ -1156,8 +1192,8 @@
     }
     .test-name { font-weight: 500; font-size: .88rem; color: var(--text); letter-spacing: .01em; }
     .test-badge {
-      font-size: .58rem; font-weight: 500; letter-spacing: .16em;
-      text-transform: uppercase; color: var(--text-3); margin-top: .2rem;
+      font-size: .7rem; font-weight: 500; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--text-2); margin-top: .2rem;
     }
 
     /* =====================================================
@@ -1175,18 +1211,18 @@
     }
     .svc-item:hover { background: var(--bg-3); }
     .svc-num {
-      font-size: .58rem; font-weight: 500; letter-spacing: .25em;
-      color: var(--gold-dk); margin-bottom: .9rem;
+      font-size: .7rem; font-weight: 500; letter-spacing: .2em;
+      color: var(--gold); margin-bottom: .9rem;
     }
     .svc-name {
       font-family: var(--serif);
       font-size: clamp(1.25rem, 2.8vw, 1.65rem);
       font-weight: 400; color: var(--ivory); margin-bottom: .7rem;
     }
-    .svc-desc { font-size: .85rem; color: var(--text-2); line-height: 1.85; }
+    .svc-desc { font-size: .9rem; color: var(--text-2); line-height: 1.85; }
     .svc-arrow {
       display: inline-flex; align-items: center; gap: .5rem;
-      font-size: .62rem; font-weight: 500; letter-spacing: .15em;
+      font-size: .75rem; font-weight: 500; letter-spacing: .12em;
       text-transform: uppercase; color: var(--gold);
       margin-top: 1.5rem; transition: gap .3s;
     }
@@ -1263,22 +1299,22 @@
     }
     .btn-wa {
       display: inline-flex; align-items: center; gap: .8rem;
-      background: transparent;
-      border: 1px solid var(--gold-dk);
-      color: var(--gold);
-      font-family: var(--sans); font-size: .62rem; font-weight: 500;
-      letter-spacing: .2em; text-transform: uppercase; text-decoration: none;
+      background: var(--ivory);
+      border: 1px solid var(--ivory);
+      color: var(--bg);
+      font-family: var(--sans); font-size: .75rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
       padding: 1.1rem 2.6rem; border-radius: 2px;
       transition: border-color .3s, color .3s, background .3s, transform .2s;
     }
-    .btn-wa svg { opacity: .7; transition: opacity .3s; flex-shrink: 0; }
+    .btn-wa svg { opacity: .85; transition: opacity .3s; flex-shrink: 0; }
     .btn-wa:hover {
-      border-color: var(--gold); color: var(--bg);
-      background: var(--gold); transform: translateY(-1px);
+      border-color: var(--gold-lt); color: var(--bg);
+      background: var(--gold-lt); transform: translateY(-1px);
     }
     .btn-wa:hover svg { opacity: 1; }
     .wa-note {
-      font-size: .68rem; color: var(--text-3); letter-spacing: .06em;
+      font-size: .75rem; color: var(--text-2); letter-spacing: .04em;
     }
     .contact-email {
       font-size: .78rem; color: var(--text-2); letter-spacing: .04em;
@@ -1416,8 +1452,8 @@
       background: transparent;
     }
     .foot-creds {
-      font-size: .6rem; font-weight: 500; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--text-3); margin-top: .3rem;
+      font-size: .7rem; font-weight: 500; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--text-2); margin-top: .3rem;
     }
     .foot-links {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
@@ -1435,7 +1471,38 @@
       color: var(--text-2); transition: border-color .3s, color .3s;
     }
     .foot-social a:hover { border-color: var(--gold); color: var(--gold); }
-    .foot-copy { font-size: .74rem; color: var(--text-3); }
+    .foot-copy { font-size: .75rem; color: var(--text-2); }
+
+    /* Sticky mobile consult bar */
+    .sticky-cta {
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 95;
+      padding: .85rem 1.25rem calc(.85rem + env(safe-area-inset-bottom));
+      background: rgba(10,9,5,.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--line);
+      transform: translateY(110%);
+      transition: transform .4s var(--ease-out);
+      display: flex; justify-content: center;
+    }
+    .sticky-cta.show { transform: translateY(0); }
+    .sticky-cta a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 100%; max-width: 28rem;
+      font-size: .75rem; font-weight: 600; letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--bg); background: var(--ivory);
+      padding: .95rem 1.5rem; border-radius: 2px;
+    }
+    @media (min-width: 1024px) {
+      .sticky-cta { display: none; }
+    }
+    body.has-sticky-cta { padding-bottom: 5.5rem; }
+    @media (min-width: 1024px) {
+      body.has-sticky-cta { padding-bottom: 0; }
+    }
 
     /* =====================================================
        SCROLL REVEAL
@@ -1450,8 +1517,8 @@
     .d3 { transition-delay: .3s; }
     .d4 { transition-delay: .4s; }
 
-    /* hide secondary hero CTA on small phones */
-    .btn-outline.hero-secondary { display: none; }
+    /* secondary hero CTA visible on all sizes */
+    .btn-outline.hero-secondary { display: inline-flex; }
 
     /* =====================================================
        RESPONSIVE — Tablet 640+
@@ -1460,7 +1527,6 @@
       .hero-actions {
         flex-direction: row; align-items: center;
       }
-      .btn-outline.hero-secondary { display: inline-flex; }
     }
     @media (min-width: 640px) {
       .f-row { grid-template-columns: 1fr 1fr; }
@@ -1537,7 +1603,10 @@
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('vis'); });
     document.body.classList.remove('intro-lock');
     var p = document.getElementById('introPanel');
-    if (p) p.style.display = 'none';
+    if (p) {
+      try { sessionStorage.setItem('re-intro', '1'); } catch (e) {}
+      p.style.display = 'none';
+    }
   }, 6000);
 </script>
 
@@ -1569,7 +1638,7 @@
 <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
   <div class="wrap">
     <div class="nav__inner">
-      <a href="#" class="nav__logo" aria-label="Renata Pâtisserie">Renata<b>.</b></a>
+      <a href="#inicio" class="nav__logo" aria-label="Renata Estrella Pâtisserie">Renata Estrella<b>.</b></a>
       <div class="nav__links" role="menubar">
         <a href="#sobreDriver"      role="menuitem">Sobre</a>
         <a href="#criacoes"    role="menuitem">Criações</a>
@@ -1578,11 +1647,16 @@
         <a href="#historias" role="menuitem">Histórias</a>
         <a href="#servicos"     role="menuitem">Serviços</a>
         <a href="#faq"          role="menuitem">FAQ</a>
-        <a href="#contato" class="nav__cta" role="menuitem">Consultar meu evento</a>
       </div>
-      <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMob" onclick="toggleNav()">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="nav__end">
+        <a href="#contato" class="nav__cta" aria-label="Consultar meu evento">
+          <span class="nav__cta-full">Consultar meu evento</span>
+          <span class="nav__cta-short">Consultar</span>
+        </a>
+        <button class="nav__burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMob" onclick="toggleNav()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </div>
 </nav>
@@ -1590,7 +1664,7 @@
 <!-- ====================================================
      HERO
 ==================================================== -->
-<section id="inicio" aria-label="Introdução — Renata Pâtisserie">
+<section id="inicio" aria-label="Introdução — Renata Estrella Pâtisserie">
   <div class="hero-media" aria-hidden="true">
     <video
       id="heroVideo"
@@ -1604,7 +1678,7 @@
       <img
         class="hero-img"
         src="hero-poster.jpg"
-        alt="Criação artesanal de luxo — Renata Pâtisserie"
+        alt="Criação artesanal de luxo — Renata Estrella Pâtisserie"
         width="720" height="1280"
         loading="eager" fetchpriority="high"
       >
@@ -1621,7 +1695,7 @@
         A arte de transformar momentos em <em>memórias eternas</em>
       </h1>
       <p class="hero-sub">
-        Criações exclusivas nascidas nas mais prestigiosas escolas de pâtisserie do mundo. Para quem entende que o extraordinário não se pede — se encomenda.
+        Formação Ferrandi Paris, Ritz Escoffier e Le Cordon Bleu. Criações exclusivas sob encomenda — para quem entende que o extraordinário não se pede, se encomenda.
       </p>
       <div class="hero-actions">
         <a href="#contato" class="btn-gold">
@@ -1677,7 +1751,7 @@
     <p class="stmt-quote reveal">
       "Cada criação é uma conversa entre <em>técnica impecável</em> e emoção verdadeira."
     </p>
-    <p class="stmt-by reveal d2">— Renata, Chef Pâtissière</p>
+    <p class="stmt-by reveal d2">— Renata Estrella, Chef Pâtissière</p>
   </div>
 </section>
 
@@ -1690,6 +1764,9 @@
       <span class="overline reveal">A fundadora</span>
       <h2 class="reveal d1">Uma jornada de Paris<br>até o seu evento</h2>
       <p class="reveal d2">Por que a formação importa. Por que a origem importa.<br>Por que cada detalhe foi pensado décadas antes de você existir.</p>
+      <a href="#criacoes" class="founder-skip reveal d3">Ver criações
+        <svg width="13" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M1 5h12M8 1l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
     </div>
   </div>
 
@@ -2514,7 +2591,7 @@
   <div class="wrap">
     <div class="foot-inner">
       <div>
-        <a href="#" class="foot-logo" aria-label="Renata Pâtisserie — Voltar ao topo"><canvas class="logo-canvas" data-src="logo.webp"></canvas></a>
+        <a href="#inicio" class="foot-logo" aria-label="Renata Estrella Pâtisserie — Voltar ao topo"><canvas class="logo-canvas" data-src="logo.webp"></canvas></a>
         <p class="foot-creds">Ferrandi · Ritz Escoffier · Le Cordon Bleu</p>
       </div>
       <nav class="foot-links" aria-label="Links do rodapé">
@@ -2535,49 +2612,61 @@
           </svg>
         </a>
       </div>
-      <p class="foot-copy">© <span id="yr"></span> Renata Pâtisserie · Todos os direitos reservados · Rio de Janeiro, Brasil · <a href="mailto:contato@renatapatisserie.com.br" style="color:var(--text-2)">contato@renatapatisserie.com.br</a></p>
+      <p class="foot-copy">© <span id="yr"></span> Renata Estrella Pâtisserie · Todos os direitos reservados · Rio de Janeiro, Brasil · <a href="mailto:contato@renatapatisserie.com.br" style="color:var(--text-2)">contato@renatapatisserie.com.br</a></p>
     </div>
   </div>
 </footer>
 
+<!-- Sticky mobile consult -->
+<div class="sticky-cta" id="stickyCta" aria-hidden="true">
+  <a href="#contato">Consultar meu evento</a>
+</div>
+
 <script>
 /* =====================================================
-   INTRO PANEL — blocking, dismissed by scroll / swipe / tap
+   INTRO PANEL — soft gate (once per session, auto-dismiss)
 ===================================================== */
 (function () {
   const panel = document.getElementById('introPanel');
   if (!panel) return;
 
-  // Lock body scroll while intro is showing
+  try {
+    if (sessionStorage.getItem('re-intro') === '1') {
+      panel.remove();
+      return;
+    }
+  } catch (e) {}
+
   document.body.classList.add('intro-lock');
 
   let dismissed = false;
   function dismiss() {
     if (dismissed) return;
     dismissed = true;
+    try { sessionStorage.setItem('re-intro', '1'); } catch (e) {}
     panel.classList.add('out');
-    // After the CSS transition (1.1s) unlock scroll and remove panel
-    panel.addEventListener('transitionend', function handler() {
-      panel.removeEventListener('transitionend', handler);
+    const unlock = () => {
       document.body.classList.remove('intro-lock');
-      panel.remove();
+      if (panel.parentNode) panel.remove();
+    };
+    panel.addEventListener('transitionend', function handler(e) {
+      if (e.propertyName && e.propertyName !== 'transform') return;
+      panel.removeEventListener('transitionend', handler);
+      unlock();
     });
+    setTimeout(unlock, 1200);
   }
 
-  // Tap / click anywhere on the panel
-  panel.addEventListener('click', dismiss, { once: true });
+  panel.addEventListener('click', dismiss);
 
-  // Keyboard: Enter, Space or Escape (for keyboard-only visitors with no mouse/touch)
   window.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') dismiss();
   }, { once: true });
 
-  // Desktop: mouse wheel down
   window.addEventListener('wheel', function (e) {
     if (e.deltaY > 0) dismiss();
   }, { once: true, passive: true });
 
-  // Mobile: swipe up (touchstart Y > touchend Y means finger moved up = scroll down intent)
   var touchY = 0;
   window.addEventListener('touchstart', function (e) {
     touchY = e.touches[0].clientY;
@@ -2588,6 +2677,8 @@
       dismiss();
     }
   }, { passive: true });
+
+  setTimeout(dismiss, 2500);
 })();
 
 /* =====================================================
@@ -2637,6 +2728,28 @@ function closeNav() {
   btn.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
 }
+
+/* =====================================================
+   STICKY MOBILE CTA
+===================================================== */
+(function () {
+  const bar = document.getElementById('stickyCta');
+  const hero = document.getElementById('inicio');
+  const contact = document.getElementById('contato');
+  if (!bar || !hero) return;
+
+  function update() {
+    const pastHero = window.scrollY > hero.offsetHeight * 0.55;
+    const contactRect = contact ? contact.getBoundingClientRect() : null;
+    const nearContact = contactRect && contactRect.top < window.innerHeight * 0.85;
+    const show = pastHero && !nearContact;
+    bar.classList.toggle('show', show);
+    bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    document.body.classList.toggle('has-sticky-cta', show);
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();
 
 /* =====================================================
    SCROLL REVEAL
