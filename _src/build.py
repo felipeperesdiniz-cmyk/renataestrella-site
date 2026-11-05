@@ -492,7 +492,7 @@ open('llms.txt', 'w', encoding='utf8').write(f'''# Renata Estrella Pâtisserie
 - [Contato]({BASE}/contato/): como fazer uma encomenda
 ''')
 REDIRECTS = [('/casamentos', '/bolo-de-casamento-rio-de-janeiro/'), ('/eventos-corporativos', '/doces-para-eventos-rio-de-janeiro/'), ('/celebracoes-privadas', '/doces-para-eventos-rio-de-janeiro/'), ('/sobre', '/renata-estrella/'), ('/galeria', '/trabalhos/')]
-json.dump({'trailingSlash': True, 'redirects': [{'source': s + '/:path*', 'destination': d, 'permanent': True} for s, d in REDIRECTS], 'headers': [
+json.dump({'trailingSlash': True, 'redirects': [{'source': s + suf, 'destination': d, 'permanent': True} for s, d in REDIRECTS for suf in ('', '/')], 'headers': [
     {'source': '/assets/(.*)', 'headers': [{'key': 'Cache-Control', 'value': 'public, max-age=2592000'}]},
     {'source': '/(.*)', 'headers': [{'key': 'X-Content-Type-Options', 'value': 'nosniff'}, {'key': 'Referrer-Policy', 'value': 'strict-origin-when-cross-origin'}]}]},
     open('vercel.json', 'w'), indent=2)

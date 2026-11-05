@@ -2,27 +2,52 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/casamentos/:path*",
+      "source": "/casamentos",
       "destination": "/bolo-de-casamento-rio-de-janeiro/",
       "permanent": true
     },
     {
-      "source": "/eventos-corporativos/:path*",
+      "source": "/casamentos/",
+      "destination": "/bolo-de-casamento-rio-de-janeiro/",
+      "permanent": true
+    },
+    {
+      "source": "/eventos-corporativos",
       "destination": "/doces-para-eventos-rio-de-janeiro/",
       "permanent": true
     },
     {
-      "source": "/celebracoes-privadas/:path*",
+      "source": "/eventos-corporativos/",
       "destination": "/doces-para-eventos-rio-de-janeiro/",
       "permanent": true
     },
     {
-      "source": "/sobre/:path*",
+      "source": "/celebracoes-privadas",
+      "destination": "/doces-para-eventos-rio-de-janeiro/",
+      "permanent": true
+    },
+    {
+      "source": "/celebracoes-privadas/",
+      "destination": "/doces-para-eventos-rio-de-janeiro/",
+      "permanent": true
+    },
+    {
+      "source": "/sobre",
       "destination": "/renata-estrella/",
       "permanent": true
     },
     {
-      "source": "/galeria/:path*",
+      "source": "/sobre/",
+      "destination": "/renata-estrella/",
+      "permanent": true
+    },
+    {
+      "source": "/galeria",
+      "destination": "/trabalhos/",
+      "permanent": true
+    },
+    {
+      "source": "/galeria/",
       "destination": "/trabalhos/",
       "permanent": true
     }
