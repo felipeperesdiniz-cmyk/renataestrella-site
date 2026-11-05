@@ -1,0 +1,626 @@
+{
+"mesa-de-doces-jantar-casa-tua-rio-de-janeiro": {
+"w": [
+1000,
+1600,
+2400,
+3200
+],
+"r": [
+5704,
+3808
+]
+},
+"aparador-doces-flores-casa-tua": {
+"w": [
+1000,
+1600,
+2400
+],
+"r": [
+5460,
+3645
+]
+},
+"doces-em-forma-de-rosa-prato-de-vidro": {
+"w": [
+800,
+1400,
+2200
+],
+"r": [
+5410,
+3611
+]
+},
+"doces-dourados-taca-de-cristal": {
+"w": [
+800,
+1400,
+2200
+],
+"r": [
+5455,
+3642
+]
+},
+"mesa-jantar-casa-tua-velas": {
+"w": [
+1000,
+1600,
+2400
+],
+"r": [
+5887,
+3930
+]
+},
+"renata-estrella-chef-patissiere-mesa-de-doces": {
+"w": [
+700,
+1100,
+1600
+],
+"r": [
+3640,
+5452
+]
+},
+"renata-estrella-e-convidada-jantar": {
+"w": [
+1000,
+1600,
+2400
+],
+"r": [
+6016,
+4016
+]
+},
+"mesa-de-doces-casamento-rio-de-janeiro": {
+"w": [
+800,
+1280,
+1600
+],
+"r": [
+1600,
+1200
+]
+},
+"doces-de-caramelo-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"brigadeiros-belgas-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"creme-brulee-docinhos-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"bolo-monograma-jantar-privado": {
+"w": [
+800,
+1280
+],
+"r": [
+1280,
+852
+]
+},
+"bolo-monograma-velas-jantar": {
+"w": [
+800,
+1118
+],
+"r": [
+1118,
+745
+]
+},
+"bolo-naked-chocolate-belga": {
+"w": [
+600,
+960
+],
+"r": [
+960,
+1280
+]
+},
+"taca-personalizada-carol-bassi-10-anos": {
+"w": [
+700,
+1200,
+1800
+],
+"r": [
+2774,
+4160
+]
+},
+"doces-flor-carol-bassi-10-anos": {
+"w": [
+700,
+1200,
+1800
+],
+"r": [
+2774,
+4160
+]
+},
+"macarons-e-joias-dassa-danna": {
+"w": [
+600,
+852
+],
+"r": [
+852,
+1280
+]
+},
+"macarons-pastel-pulseira-dassa-danna": {
+"w": [
+600,
+1024
+],
+"r": [
+1024,
+1280
+]
+},
+"bolo-casinha-natal": {
+"w": [
+600,
+720
+],
+"r": [
+720,
+1280
+]
+},
+"pavlova-de-morangos": {
+"w": [
+600,
+960
+],
+"r": [
+960,
+1280
+]
+},
+"mini-pavlovas-pascoa": {
+"w": [
+600,
+960
+],
+"r": [
+960,
+1280
+]
+},
+"bolo-pascoa-caixa-presente": {
+"w": [
+600,
+960
+],
+"r": [
+960,
+1280
+]
+},
+"tartalete-de-morangos": {
+"w": [
+600,
+1036
+],
+"r": [
+1036,
+1280
+]
+},
+"bolo-com-calda-de-doce-de-leite": {
+"w": [
+600,
+1032
+],
+"r": [
+1032,
+1280
+]
+},
+"renata-estrella-cozinha-profissional-chefs": {
+"w": [
+500,
+900
+],
+"r": [
+960,
+1280
+]
+},
+"renata-estrella-certificado-ferrandi-paris": {
+"w": [
+500,
+1000
+],
+"r": [
+1179,
+1634
+]
+},
+"renata-estrella-dolma-ferrandi-chocolate": {
+"w": [
+600,
+801
+],
+"r": [
+801,
+1200
+]
+},
+"renata-estrella-preparando-bandeja": {
+"w": [
+500,
+900
+],
+"r": [
+983,
+1279
+]
+},
+"mesa-longa-jantar-casa-tua": {
+"w": [
+1000,
+1600,
+2400
+],
+"r": [
+5810,
+3878
+]
+},
+"cartao-de-lugar-casa-tua": {
+"w": [
+800,
+1400,
+2000
+],
+"r": [
+5870,
+3919
+]
+},
+"flores-e-doces-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"beijinhos-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"trufas-de-chocolate-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"docinhos-de-coco-e-chocolate-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"creme-brulee-prato-redondo-casamento": {
+"w": [
+600,
+1000
+],
+"r": [
+1200,
+1600
+]
+},
+"jantar-privado-mesa-longa": {
+"w": [
+800,
+1280
+],
+"r": [
+1280,
+852
+]
+},
+"jantar-privado-mesa-velas": {
+"w": [
+800,
+1280
+],
+"r": [
+1280,
+852
+]
+},
+"monograma-bolo-detalhe": {
+"w": [
+800,
+1280
+],
+"r": [
+1280,
+852
+]
+},
+"macarons-e-joias-coloridas-dassa-danna": {
+"w": [
+600,
+736
+],
+"r": [
+736,
+944
+]
+},
+"macarons-e-aneis-dassa-danna": {
+"w": [
+600,
+853
+],
+"r": [
+853,
+1280
+]
+},
+"natal-bolo-pinheiro": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1632
+]
+},
+"natal-bolo-sorvete": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1655
+]
+},
+"natal-bolo-casinha-de-chocolate": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1655
+]
+},
+"natal-torta-de-coco-gelada": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1332
+]
+},
+"natal-buche-de-noel": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1308
+]
+},
+"natal-pavlova-de-morangos": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1512
+]
+},
+"natal-pavlova-de-frutas-amarelas": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1440
+]
+},
+"natal-flor-de-tartalete": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1440
+]
+},
+"natal-tartalete-de-morango": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1620
+]
+},
+"natal-tartalete-de-limao-siciliano": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1524
+]
+},
+"natal-charlotte-de-morangos": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1476
+]
+},
+"natal-torta-de-noz-pecan": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1548
+]
+},
+"presente-natal-casinha-ginger": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1128
+]
+},
+"presente-natal-tubo-lata-brownies": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1608
+]
+},
+"presente-natal-bolas-brownie-bites": {
+"w": [
+600,
+1000
+],
+"r": [
+1147,
+2088
+]
+},
+"presente-natal-noel-collection-pao-de-mel": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1608
+]
+},
+"presente-natal-casinha-single-noz-pecan": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1368
+]
+},
+"presente-natal-casinha-dupla-emocao": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1200
+]
+},
+"presente-natal-caixas-trilogia": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+1272
+]
+},
+"presente-natal-lata-papai-noel": {
+"w": [
+600,
+1000
+],
+"r": [
+1350,
+936
+]
+},
+"renata-estrella-chef-patissiere-chocolate-belga": {
+"w": [
+700,
+1100,
+1462
+],
+"r": [
+1462,
+1453
+]
+}
+}

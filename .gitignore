@@ -1,4 +1,26 @@
+# Only the published site and its build source are tracked.
+# Raw photos, videos, menus, the ebook and local tool files stay out of this public repo.
+/*
+!/.gitignore
+!/.vercelignore
+!/vercel.json
+!/index.html
+!/404.html
+!/favicon.ico
+!/robots.txt
+!/sitemap.xml
+!/llms.txt
+!/google282dbca09aa8dbe7.html
+!/assets/
+/assets/hero-*.jpg
+/assets/logo@1x.png
+!/_src/
+!/trabalhos/
+!/cardapio/
+!/cardapio-de-natal/
+!/bolo-de-casamento-rio-de-janeiro/
+!/doces-para-eventos-rio-de-janeiro/
+!/renata-estrella/
+!/perguntas-frequentes/
+!/contato/
 .DS_Store
-.claude/
-.vercel/
-ffmpeg2pass-*.log
