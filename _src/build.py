@@ -148,6 +148,7 @@ def star(color):
 
 # ------------------------------------------------------------------ HOME
 HERO_IMG = 'renata-estrella-chef-patissiere-chocolate-belga'
+HERO_DESK = 'renata-estrella-chef-patissiere-chocolate-belga-cozinha'
 MENU_ROWS = [('brigadeiros', 'Brigadeiros', 'Belgas ao leite, branco, 70%, gold e rose; trufas com praliné de pistache e avelã'),
              ('doces', 'Doces finos', 'Crème brûlée, cocadinha cremosa, flor de pistache, nozes crocantes'),
              ('macarons-e-brownies', 'Macarons e brownies', 'Macarons por unidade e brownies belgas recheados'),
@@ -203,14 +204,15 @@ HOME_EVENTS = ''.join([
 ])
 
 home = f"""<section class="hero" aria-labelledby="h1">
-  <div class="hero__l">
-    <h1 id="h1">Doces, bolos e sobremesas sob encomenda para casamentos, festas e eventos no Rio de Janeiro.</h1>
-    <div class="hero__b">
-      <p class="wm" aria-label="Renata Estrella"><span aria-hidden="true">Renata</span> <span aria-hidden="true">Estrella</span></p>
+  <div class="hero__m"><picture><source media="(min-width:861px)" srcset="{', '.join(f'/assets/img/{HERO_DESK}-{x}.webp {x}w' for x in DIMS[HERO_DESK]['w'])}" sizes="72vw" width="{DIMS[HERO_DESK]['r'][0]}" height="{DIMS[HERO_DESK]['r'][1]}">{img(HERO_IMG, '100vw', 'A chef Renata Estrella, de dólmã branco, derrama chocolate de uma espátula em sua cozinha', lazy=False)}</picture></div>
+  <div class="hero__c">
+    <p class="hero__k">Pâtisserie <span aria-hidden="true">·</span> Rio de Janeiro</p>
+    <p class="wm" aria-label="Renata Estrella"><span aria-hidden="true">Renata</span> <span aria-hidden="true">Estrella</span></p>
+    <div class="hero__f">
+      <h1 id="h1">Doces, bolos e sobremesas sob encomenda para casamentos, festas e eventos no Rio de Janeiro.</h1>
       <p class="hero__p">Chef formada em Paris pela Ferrandi, Ritz Escoffier e Le Cordon Bleu.</p>
     </div>
   </div>
-  <div class="hero__m">{img(HERO_IMG, '(max-width:860px) 100vw, 50vw', 'A chef Renata Estrella, de dólmã branco, derrama chocolate de uma espátula em sua cozinha', lazy=False)}</div>
 </section>
 
 <section class="intro sect grid" aria-label="Sobre o ateliê">
@@ -306,7 +308,8 @@ pages = {}
 pages['/'] = shell('/', 'Renata Estrella Pâtisserie | Bolos e doces sob encomenda no Rio de Janeiro',
     'Confeitaria artesanal na Barra da Tijuca, Rio de Janeiro. Bolos de casamento, mesas de doces, brigadeiros belgas e macarons sob encomenda, pela chef Renata Estrella, formada em Paris.',
     home, [PERSON, {'@type': 'VideoObject', 'name': 'Renata Estrella prepara uma pavlova de morangos', 'description': 'A chef Renata Estrella faz uma pavlova de morangos, do merengue à finalização com morangos frescos.', 'thumbnailUrl': BASE + '/assets/video/renata-estrella-pavlova-de-morangos.webp', 'contentUrl': BASE + '/assets/video/renata-estrella-pavlova-de-morangos.mp4', 'uploadDate': '2026-06-08', 'duration': 'PT55S', 'inLanguage': 'pt-BR'}, {'@type': 'WebPage', '@id': BASE + '/#pagina', 'url': BASE + '/', 'name': 'Renata Estrella Pâtisserie', 'isPartOf': {'@id': BASE + '/#site'}, 'about': {'@id': BASE + '/#negocio'}, 'primaryImageOfPage': BASE + '/assets/og.jpg'}],
-    preload=f'<link rel="preload" as="image" type="image/webp" imagesrcset="' + ', '.join(f'/assets/img/{HERO_IMG}-{x}.webp {x}w' for x in DIMS[HERO_IMG]['w']) + '" imagesizes="(max-width:860px) 100vw, 50vw" fetchpriority="high">\n',
+    preload=f'<link rel="preload" as="image" type="image/webp" media="(max-width:860px)" imagesrcset="' + ', '.join(f'/assets/img/{HERO_IMG}-{x}.webp {x}w' for x in DIMS[HERO_IMG]['w']) + '" imagesizes="100vw" fetchpriority="high">\n'
+            + f'<link rel="preload" as="image" type="image/webp" media="(min-width:861px)" imagesrcset="' + ', '.join(f'/assets/img/{HERO_DESK}-{x}.webp {x}w' for x in DIMS[HERO_DESK]['w']) + '" imagesizes="72vw" fetchpriority="high">\n',
     foot=end())
 
 # ------------------------------------------------------------------ TRABALHOS

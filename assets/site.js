@@ -15,3 +15,9 @@ var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.targ
 vs.forEach(function(v){io.observe(v)});
 document.querySelectorAll('.vbtn').forEach(function(b){var v=b.parentNode.querySelector('video');b.addEventListener('click',function(){if(v.paused){delete v.dataset.paused;v.play();b.textContent='Pausar'}else{v.dataset.paused='1';v.pause();b.textContent='Reproduzir'}})});
 })();
+(function(){
+var h=document.querySelector('.hero'),hd=document.querySelector('.hd');
+if(!h||!hd)return;
+function u(){hd.classList.toggle('solid',scrollY>h.offsetHeight-hd.offsetHeight)}
+addEventListener('scroll',u,{passive:true});addEventListener('resize',u);u();
+})();
